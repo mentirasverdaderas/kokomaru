@@ -3,24 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kokomarú - Agendas Personalizadas</title>
-    <!-- Google Fonts: Estilo limpio, moderno y tierno (Kawaii sin ser infantil) -->
+    <title>Kokomarú - Agendas Personalizadas y Exclusivas</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome para íconos de WhatsApp y navegación -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- NAVBAR / HEADER DE LA TIENDA -->
+    <nav class="navbar">
+        <div class="nav-brand">Kokomarú</div>
+        <div class="nav-links">
+            <a href="#destacadas">Agendas Listas</a>
+            <a href="#como-funciona">Cómo Funciona</a>
+            <button id="openModalNavBtn" class="btn-nav-custom">Arma la tuya</button>
+        </div>
+    </nav>
+
     <!-- HERO SECTION PRINCIPAL -->
     <header class="hero">
         <div class="hero-content">
             <span class="brand-tag">Papelería con Amor & Diseño</span>
-            <h1>Kokomarú</h1>
-            <p>Agendas personalizadas diseñadas para acompañar tu día a día con estilo, orden y ternura.</p>
-            <button id="openModalBtn" class="btn-primary">Arma tu agenda</button>
+            <h1>Organiza tus días con estilo y ternura</h1>
+            <p>Elige una de nuestras agendas exclusivas ya listas para despacho o diseña cada detalle de tu planner ideal paso a paso.</p>
+            <div class="hero-buttons">
+                <button id="openModalBtn" class="btn-primary">Arma tu agenda desde cero</button>
+                <a href="#destacadas" class="btn-secondary-hero">Ver agendas listas</a>
+            </div>
         </div>
     </header>
+
+    <!-- SECCIÓN: CÓMO FUNCIONA -->
+    <section id="como-funciona" class="section-container">
+        <h2>¿Cómo funciona Kokomarú?</h2>
+        <p class="section-desc">Queremos que tengas exactamente lo que buscas en pocos minutos:</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
+                <h3>1. Elige tu Estilo</h3>
+                <p>Emprendedoras, maestras, universitarias o de uso diario creadas para tu ritmo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <h3>2. Selecciona tu Versión</h3>
+                <p>Tres rangos de precios (Económica, Intermedia y Full) adaptados a lo que necesitas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h3>3. Personaliza o Compra</h3>
+                <p>Arma portadas, guardas, rayados y planners o llévate una edición lista recomendada.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: AGENDAS DESTACADAS / LISTAS PARA COMPRAR -->
+    <section id="destacadas" class="section-container bg-light">
+        <h2>Agendas Listas para Enviar</h2>
+        <p class="section-desc">¿Te enamoraste de un diseño? Pídelo directamente sin pasar por el configurador:</p>
+        <div class="ready-grid" id="readyAgendasGrid">
+            <!-- Inyectado por JS -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Kokomarú • Hecho con dedicación en Santiago, Chile 🌸</p>
+    </footer>
 
     <!-- VENTANA EMERGENTE (MODAL) DEL CONFIGURADOR -->
     <div id="configModal" class="modal-overlay">
@@ -30,53 +78,39 @@
             <!-- ENCABEZADO DE PASOS -->
             <div class="modal-header">
                 <div class="step-indicator">
-                    <span id="stepIndicatorText">Paso 1 de 4: Tipo de Agenda</span>
+                    <span id="stepIndicatorMain">Paso 1 de 4</span>
+                    <span id="stepIndicatorSub">Tipo de Agenda</span>
                 </div>
-                <!-- Botón de dudas WhatsApp en Pasos 1, 2 y 3 -->
-                <a id="helpWhatsappBtn" href="https://wa.me/56900000000?text=Hola,%20tengo%20dudas%20para%20elegir%20mi%20agenda%20Kokomar%C3%" target="_blank" class="btn-help-wa">
+                <a id="helpWhatsappBtn" href="https://wa.me/56900000000?text=Hola,%20tengo%20dudas%20para%20elegir%20mi%20agenda%20Kokomar%C3%B3" target="_blank" class="btn-help-wa">
                     <i class="fa-brands fa-whatsapp"></i> ¿Dudas?
                 </a>
             </div>
 
             <!-- CONTENEDOR DE LOS PASOS -->
             <div class="modal-body">
-
-                <!-- PASO 1: TIPO DE AGENDA -->
                 <div class="step-content active" id="step1">
                     <h2>Elige tu tipo de agenda</h2>
                     <p class="step-subtitle">Selecciona la opción que mejor se adapte a tu estilo de vida:</p>
-                    <div class="options-grid" id="tipoAgendaGrid">
-                        <!-- Inyectado por JS -->
-                    </div>
+                    <div class="options-grid" id="tipoAgendaGrid"></div>
                 </div>
 
-                <!-- PASO 2: PRECIO / VERSIÓN -->
                 <div class="step-content" id="step2">
                     <h2>Elige tu versión y calidad</h2>
                     <p class="step-subtitle">Escoge el nivel de acabado que prefieras:</p>
-                    <div class="options-grid vertical-grid" id="versionGrid">
-                        <!-- Inyectado por JS -->
-                    </div>
+                    <div class="options-grid vertical-grid" id="versionGrid"></div>
                 </div>
 
-                <!-- PASO 3: TEMÁTICA -->
                 <div class="step-content" id="step3">
                     <h2>Elige tu temática favorita</h2>
                     <p class="step-subtitle">Selecciona el diseño visual que más te enamore:</p>
-                    <div class="options-grid tematica-grid" id="tematicaGrid">
-                        <!-- Inyectado por JS -->
-                    </div>
+                    <div class="options-grid tematica-grid" id="tematicaGrid"></div>
                 </div>
 
-                <!-- PASO 4: SECCIONES DE LA AGENDA (PERSONALIZACIÓN) -->
                 <div class="step-content" id="step4">
                     <h2>Personaliza los detalles de tu agenda</h2>
                     <p class="step-subtitle">Debes seleccionar una opción en cada sección:</p>
-                    <div id="seccionesContainer">
-                        <!-- Inyectado dinámicamente según la versión elegida -->
-                    </div>
+                    <div id="seccionesContainer"></div>
 
-                    <!-- SECCIÓN DE ENVÍO -->
                     <div class="shipping-section">
                         <h3>Método de Envío</h3>
                         <div class="shipping-options">
@@ -97,15 +131,12 @@
                         </div>
                     </div>
 
-                    <!-- CONTROLES FINALES Y RESUMEN -->
                     <div class="final-actions" id="finalActionsSection" style="display: none;">
                         <button id="toggleSummaryBtn" class="btn-secondary">
                             <i class="fa-solid fa-list-check"></i> Resumen del pedido
                         </button>
                         
-                        <div id="summaryBox" class="summary-box" style="display: none;">
-                            <!-- Inyectado por JS -->
-                        </div>
+                        <div id="summaryBox" class="summary-box" style="display: none;"></div>
 
                         <div class="action-buttons-group">
                             <a id="sendOrderWhatsappBtn" href="#" target="_blank" class="btn-whatsapp-main">
@@ -113,17 +144,15 @@
                             </a>
                             <p class="whatsapp-subtext">Conversemos y coordinemos el pago y los detalles del envío</p>
 
-                            <!-- Botón secundario: Pedir opinión a una amiga -->
                             <button id="openFriendModalBtn" class="btn-friend">
                                 <i class="fa-solid fa-user-group"></i> Pedir opinión a una amiga
                             </button>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- NAVEGACIÓN INFERIOR (BOTONES ANTERIOR / VOLVER / SIGUIENTE) -->
+            <!-- NAVEGACIÓN INFERIOR -->
             <div class="modal-footer">
                 <button id="prevStepBtn" class="btn-nav" style="display: none;">
                     <i class="fa-solid fa-arrow-left"></i> Volver
@@ -133,17 +162,16 @@
                     Siguiente <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
-
         </div>
     </div>
 
-    <!-- MODAL PARA AMPLIAR IMÁGENES -->
+    <!-- MODAL ZOOM IMAGEN -->
     <div id="imageZoomModal" class="zoom-modal">
         <button id="closeZoomBtn" class="zoom-close"><i class="fa-solid fa-xmark"></i></button>
         <img id="zoomedImg" src="" alt="Imagen ampliada">
     </div>
 
-    <!-- MODAL PARA COMPARTIR CON AMIGA (INPUT NÚMERO) -->
+    <!-- MODAL AMIGA -->
     <div id="friendModal" class="friend-modal-overlay">
         <div class="friend-modal-content">
             <h3>Enviar a tu amiga</h3>

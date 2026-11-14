@@ -1,4 +1,3 @@
-// DATOS DEL CATALOGO Y CONFIGURACIONES
 const tiposAgenda = [
     { id: 'emprendedora', nombre: 'Agenda Emprendedora', desc: 'Ideal para organizar tus metas, finanzas y proyectos de negocio.', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&auto=format&fit=crop&q=80' },
     { id: 'maestras', nombre: 'Agenda Maestras', desc: 'Diseñada especialmente para planificar clases, evaluaciones y asistencia.', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&auto=format&fit=crop&q=80' },
@@ -21,7 +20,31 @@ const tematicasAgenda = [
     { id: 'estelar', nombre: 'Galaxia & Estrellas', img: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=400&auto=format&fit=crop&q=80' }
 ];
 
-// Opciones para el Paso 4 (Secciones)
+// AGENDAS YA LISTAS PARA COMPRAR DIRECTO EN LA HOME
+const agendasListas = [
+    {
+        nombre: 'Agenda Emprendedora - Edición Snoopy',
+        desc: 'Versión Full con 120 hojas, esquineros, elástico y temática exclusiva de Snoopy.',
+        precio: 24990,
+        img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80',
+        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Emprendedora - Edición Snoopy (Versión Full) por $24.990.'
+    },
+    {
+        nombre: 'Agenda Maestras - Jardín Botánico',
+        desc: 'Versión Intermedia con esquineros, 100 hojas de 105g y diseño floral botánico.',
+        precio: 19990,
+        img: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&auto=format&fit=crop&q=80',
+        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Maestras - Jardín Botánico (Versión Intermedia) por $19.990.'
+    },
+    {
+        nombre: 'Agenda Universitarias - Minimal Chic',
+        desc: 'Versión Económica esencial con 100 hojas de 90g y diseño minimalista limpio.',
+        precio: 14990,
+        img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&auto=format&fit=crop&q=80',
+        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Universitarias - Minimal Chic (Versión Económica) por $14.990.'
+    }
+];
+
 const opcionesSecciones = {
     portada: [
         { id: 'portada1', nombre: 'Portada Estilo 1', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&auto=format&fit=crop&q=80' },
@@ -54,58 +77,41 @@ const opcionesSecciones = {
     ]
 };
 
-// ESTADO DE LA SELECCIÓN
 let currentStep = 1;
 let selectedConfig = {
     tipo: null,
     version: null,
     tematica: null,
-    secciones: {
-        portada: null,
-        guarda: null,
-        planner: null,
-        rayado: null,
-        fondo: null,
-        marcalibros: null
-    },
+    secciones: { portada: null, guarda: null, planner: null, rayado: null, fondo: null, marcalibros: null },
     envio: null
 };
 
-// ELEMENTOS DOM
 const modal = document.getElementById('configModal');
 const openModalBtn = document.getElementById('openModalBtn');
+const openModalNavBtn = document.getElementById('openModalNavBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
 const nextStepBtn = document.getElementById('nextStepBtn');
 const prevStepBtn = document.getElementById('prevStepBtn');
-const stepIndicatorText = document.getElementById('stepIndicatorText');
+const stepIndicatorMain = document.getElementById('stepIndicatorMain');
+const stepIndicatorSub = document.getElementById('stepIndicatorSub');
 const helpWhatsappBtn = document.getElementById('helpWhatsappBtn');
 
-// INICIALIZAR VISTAS
 document.addEventListener('DOMContentLoaded', () => {
+    renderReadyAgendas();
     renderStep1();
     renderStep2();
     renderStep3();
     renderStep4();
     checkURLParameters();
 
-    openModalBtn.addEventListener('click', () => modal.classList.add('active'));
+    const openModal = () => modal.classList.add('active');
+    openModalBtn.addEventListener('click', openModal);
+    openModalNavBtn.addEventListener('click', openModal);
     closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
 
-    nextStepBtn.addEventListener('click', () => {
-        if (currentStep < 4) {
-            currentStep++;
-            updateStepView();
-        }
-    });
+    nextStepBtn.addEventListener('click', () => { if (currentStep < 4) { currentStep++; updateStepView(); } });
+    prevStepBtn.addEventListener('click', () => { if (currentStep > 1) { currentStep--; updateStepView(); } });
 
-    prevStepBtn.addEventListener('click', () => {
-        if (currentStep > 1) {
-            currentStep--;
-            updateStepView();
-        }
-    });
-
-    // Envío de radio buttons
     document.querySelectorAll('input[name="shipping"]').forEach(radio => {
         radio.addEventListener('change', (e) => {
             selectedConfig.envio = e.target.value;
@@ -113,26 +119,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Zoom imagen
     const zoomModal = document.getElementById('imageZoomModal');
-    const closeZoomBtn = document.getElementById('closeZoomBtn');
-    closeZoomBtn.addEventListener('click', () => zoomModal.classList.remove('active'));
+    document.getElementById('closeZoomBtn').addEventListener('click', () => zoomModal.classList.remove('active'));
 
-    // Botón Resumen
     document.getElementById('toggleSummaryBtn').addEventListener('click', () => {
         const box = document.getElementById('summaryBox');
         box.style.display = box.style.display === 'none' ? 'block' : 'none';
         updateSummaryContent();
     });
 
-    // Modal Amiga
     const friendModal = document.getElementById('friendModal');
     document.getElementById('openFriendModalBtn').addEventListener('click', () => friendModal.classList.add('active'));
     document.getElementById('cancelFriendBtn').addEventListener('click', () => friendModal.classList.remove('active'));
     document.getElementById('submitFriendBtn').addEventListener('click', sendToFriend);
 });
 
-// RENDERIZAR PASO 1
+function renderReadyAgendas() {
+    const grid = document.getElementById('readyAgendasGrid');
+    grid.innerHTML = agendasListas.map(item => `
+        <div class="ready-card">
+            <img src="${item.img}" alt="${item.nombre}">
+            <div class="ready-card-body">
+                <h3>${item.nombre}</h3>
+                <p>${item.desc}</p>
+                <div class="ready-price">$${item.precio.toLocaleString('es-CL')}</div>
+                <a href="https://wa.me/56900000000?text=${encodeURIComponent(item.mensajeWa)}" target="_blank" class="btn-buy-ready">
+                    <i class="fa-brands fa-whatsapp"></i> Comprar esta agenda
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
+
 function renderStep1() {
     const grid = document.getElementById('tipoAgendaGrid');
     grid.innerHTML = tiposAgenda.map(item => `
@@ -148,13 +166,8 @@ function renderStep1() {
     `).join('');
 }
 
-function selectTipo(id) {
-    selectedConfig.tipo = id;
-    renderStep1();
-    validateStep();
-}
+function selectTipo(id) { selectedConfig.tipo = id; renderStep1(); validateStep(); }
 
-// RENDERIZAR PASO 2
 function renderStep2() {
     const grid = document.getElementById('versionGrid');
     grid.innerHTML = versionesAgenda.map(item => `
@@ -174,14 +187,8 @@ function renderStep2() {
     `).join('');
 }
 
-function selectVersion(id) {
-    selectedConfig.version = id;
-    renderStep2();
-    renderStep4(); // Actualizar secciones según versión (ej: full incluye marcalibros)
-    validateStep();
-}
+function selectVersion(id) { selectedConfig.version = id; renderStep2(); renderStep4(); validateStep(); }
 
-// RENDERIZAR PASO 3
 function renderStep3() {
     const grid = document.getElementById('tematicaGrid');
     grid.innerHTML = tematicasAgenda.map(item => `
@@ -196,21 +203,12 @@ function renderStep3() {
     `).join('');
 }
 
-function selectTematica(id) {
-    selectedConfig.tematica = id;
-    renderStep3();
-    validateStep();
-}
+function selectTematica(id) { selectedConfig.tematica = id; renderStep3(); validateStep(); }
 
-// RENDERIZAR PASO 4 (SECCIONES)
 function renderStep4() {
     const container = document.getElementById('seccionesContainer');
     let seccionesActivas = ['portada', 'guarda', 'planner', 'rayado', 'fondo'];
-    
-    // Si es versión full, agregamos marcalibros
-    if (selectedConfig.version === 'full') {
-        seccionesActivas.push('marcalibros');
-    }
+    if (selectedConfig.version === 'full') seccionesActivas.push('marcalibros');
 
     const titles = {
         portada: 'Portada / Contraportada (Elige 1 de 3)',
@@ -249,19 +247,16 @@ function selectSeccionOption(seccion, optId) {
     renderStep4();
 }
 
-// VALIDACIONES DE PASOS
 function validateStep() {
     let isValid = false;
     if (currentStep === 1) isValid = selectedConfig.tipo !== null;
     if (currentStep === 2) isValid = selectedConfig.version !== null;
     if (currentStep === 3) isValid = selectedConfig.tematica !== null;
-    
     nextStepBtn.disabled = !isValid;
 }
 
 function checkStep4Completion() {
     if (currentStep !== 4) return;
-
     let seccionesActivas = ['portada', 'guarda', 'planner', 'rayado', 'fondo'];
     if (selectedConfig.version === 'full') seccionesActivas.push('marcalibros');
 
@@ -277,38 +272,35 @@ function checkStep4Completion() {
     }
 }
 
-// ACTUALIZAR VISTA DE PASOS EN MODAL
 function updateStepView() {
     for (let i = 1; i <= 4; i++) {
         document.getElementById(`step${i}`).classList.remove('active');
     }
     document.getElementById(`step${currentStep}`).classList.add('active');
 
-    // Botón WhatsApp de dudas solo en pasos 1, 2 y 3
     if (currentStep === 4) {
         helpWhatsappBtn.style.display = 'none';
-        stepIndicatorText.textContent = 'Paso 4: Personalización y Envío';
+        stepIndicatorMain.textContent = 'Paso 4 de 4';
+        stepIndicatorSub.textContent = 'Personalización y Envío';
         prevStepBtn.style.display = 'flex';
         nextStepBtn.style.display = 'none';
         checkStep4Completion();
     } else {
         helpWhatsappBtn.style.display = 'flex';
-        stepIndicatorText.textContent = `Paso ${currentStep} de 4: ${currentStep === 1 ? 'Tipo de Agenda' : currentStep === 2 ? 'Versión y Precio' : 'Temática'}`;
+        stepIndicatorMain.textContent = `Paso ${currentStep} de 4`;
+        stepIndicatorSub.textContent = currentStep === 1 ? 'Tipo de Agenda' : currentStep === 2 ? 'Versión y Precio' : 'Temática';
         prevStepBtn.style.display = currentStep === 1 ? 'none' : 'flex';
         nextStepBtn.style.display = 'flex';
         validateStep();
     }
 }
 
-// ZOOM DE IMÁGENES
 function openZoom(imgSrc) {
     const zoomModal = document.getElementById('imageZoomModal');
-    const zoomedImg = document.getElementById('zoomedImg');
-    zoomedImg.src = imgSrc;
+    document.getElementById('zoomedImg').src = imgSrc;
     zoomModal.classList.add('active');
 }
 
-// RESUMEN Y WHATSAPP
 function getResumenTexto() {
     const tipoObj = tiposAgenda.find(x => x.id === selectedConfig.tipo);
     const verObj = versionesAgenda.find(x => x.id === selectedConfig.version);
@@ -361,12 +353,9 @@ function updateSummaryContent() {
 function updateWhatsappLinks() {
     const texto = getResumenTexto();
     const encoded = encodeURIComponent(texto);
-    const btnWa = document.getElementById('sendOrderWhatsappBtn');
-    // Cambia el 56900000000 por tu número real de WhatsApp de emprendedora
-    btnWa.href = `https://wa.me/56900000000?text=${encoded}`;
+    document.getElementById('sendOrderWhatsappBtn').href = `https://wa.me/56900000000?text=${encoded}`;
 }
 
-// COMPARTIR CON AMIGA
 function sendToFriend() {
     const phoneInput = document.getElementById('friendPhoneInput').value.trim();
     if (phoneInput.length !== 8 || isNaN(phoneInput)) {
@@ -375,8 +364,6 @@ function sendToFriend() {
     }
 
     const fullPhone = `569${phoneInput}`;
-    
-    // Generar URL con parámetros actuales para que la amiga abra la web con todo seleccionado
     const params = new URLSearchParams({
         t: selectedConfig.tipo || '',
         v: selectedConfig.version || '',
@@ -392,16 +379,12 @@ function sendToFriend() {
 
     const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
     const resumen = getResumenTexto();
-
     const mensajeAmiga = `¡Hola! Mira la agenda Kokomarú que estoy armando:\n\n${resumen}\n\n¿Qué te parece? Puedes verla y cambiar opciones aquí:\n${shareUrl}`;
-    const encoded = encodeURIComponent(mensajeAmiga);
-
-    // Abrir WhatsApp para enviar a la amiga
-    window.open(`https://wa.me/${fullPhone}?text=${encoded}`, '_blank');
+    
+    window.open(`https://wa.me/${fullPhone}?text=${encodeURIComponent(mensajeAmiga)}`, '_blank');
     document.getElementById('friendModal').classList.remove('active');
 }
 
-// LEER PARÁMETROS URL SI ALGUIEN ABRE UN LINK COMPARTIDO (Ej: La amiga B o A)
 function checkURLParameters() {
     const urlParams = new URLSearchParams(window.location.search);
     const t = urlParams.get('t');
@@ -417,7 +400,6 @@ function checkURLParameters() {
         selectedConfig.secciones.marcalibros = urlParams.get('m') || null;
         selectedConfig.envio = urlParams.get('e') || null;
 
-        // Abrir el modal automáticamente con las opciones cargadas
         setTimeout(() => {
             modal.classList.add('active');
             currentStep = 4;
