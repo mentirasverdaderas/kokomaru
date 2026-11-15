@@ -1223,49 +1223,24 @@ footer {
     flex: 1.4;
 }
 
-/* Estilo exclusivo para el bloque de Live con estética TikTok */
-#heroLiveContent.live-mode {
-    background: #0f0f11 !important; /* Fondo negro puro */
-    border: 1px solid #26262b;
-    border-radius: 20px;
-    padding: 35px 25px;
-    color: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+/* --- HERO LIVE A TODO LO ANCHO DE LA PANTALLA --- */
+header.live-mode-active, 
+.hero-content.live-mode {
+    width: 100vw !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    background: #0f0f11 !important; /* Fondo negro puro de TikTok */
+    border-radius: 0 !important;   /* Quitamos las esquinas redondeadas para que toque los bordes */
+    border: none !important;
+    box-shadow: none !important;
+    padding: 60px 20px !important;
 }
 
-#heroLiveContent.live-mode h1 {
-    color: #ffffff !important;
-}
-
-#heroLiveContent.live-mode .hero-copy {
-    color: #b0b0b8 !important;
-}
-
-/* Botón de TikTok estilizado dentro del bloque */
-#heroLiveContent.live-mode .btn-tiktok-live {
-    background: linear-gradient(135deg, #fe2c55, #25f4ee);
-    color: #ffffff;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 15px rgba(254, 44, 85, 0.4);
-    transition: transform 0.2s ease;
-}
-
-#heroLiveContent.live-mode .btn-tiktok-live:hover {
-    transform: translateY(-2px);
-}
-
-/* Parpadeo suave y lento para el indicador */
-.live-badge {
-    animation: pulseSlow 2s infinite ease-in-out;
-}
-
-@keyframes pulseSlow {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+/* Aseguramos que el texto y contenido interno sí mantengan un ancho cómodo y centrado */
+.hero-content.live-mode {
+    max-width: 800px;
+    margin: 0 auto !important; /* Vuelve a centrar el contenido interno */
 }
