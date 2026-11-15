@@ -1,14 +1,26 @@
+// =========================================================================
+// CONFIGURACIÓN GENERAL (EDITA AQUÍ TU NÚMERO Y HORARIO DE LIVE)
+// =========================================================================
+const WHATSAPP_PYME = '56900000000'; // Reemplaza con tu número real (569 + 8 dígitos)
+const COSTO_ENVIO_SANTIAGO = 2990;
+
+// Cambia FORZAR_MODO_LIVE a true si quieres probar cómo se ve el Hero durante un Live
+const FORZAR_MODO_LIVE = false; 
+
+// =========================================================================
+// CATÁLOGO DE PRODUCTOS Y OPCIONES
+// =========================================================================
 const tiposAgenda = [
-    { id: 'emprendedora', nombre: 'Agenda Emprendedora', desc: 'Ideal para organizar tus metas, finanzas y proyectos de negocio.', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&auto=format&fit=crop&q=80' },
-    { id: 'maestras', nombre: 'Agenda Maestras', desc: 'Diseñada especialmente para planificar clases, evaluaciones y asistencia.', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&auto=format&fit=crop&q=80' },
-    { id: 'universitaria', nombre: 'Agenda Universitarias', desc: 'Control total de ramos, notas, pruebas y horarios semestrales.', img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&auto=format&fit=crop&q=80' },
-    { id: 'diaria', nombre: 'Agenda Uso Diario', desc: 'Práctica, ligera y perfecta para tu día a día personal.', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&auto=format&fit=crop&q=80' }
+    { id: 'emprendedora', nombre: 'Agenda Emprendedora', desc: 'Control total de ventas, pedidos, proveedores, metas mensuales y flujo de caja.', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&auto=format&fit=crop&q=80' },
+    { id: 'maestras', nombre: 'Agenda Maestras', desc: 'Planificación de clases, registro de asistencia, evaluaciones y reuniones de apoderados.', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&auto=format&fit=crop&q=80' },
+    { id: 'universitaria', nombre: 'Agenda Universitarias', desc: 'Organizador de ramos, fechas de certámenes, trabajos grupales y promedio de notas.', img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&auto=format&fit=crop&q=80' },
+    { id: 'diaria', nombre: 'Agenda Uso Diario', desc: 'Hábitos, citas médicas, listas de tareas, finanzas personales y bienestar diario.', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&auto=format&fit=crop&q=80' }
 ];
 
 const versionesAgenda = [
     { id: 'economica', nombre: 'Versión Económica (Esencial)', precio: 14990, desc: '• 100 hojas de 90g\n• Diseño fijo (sin personalizar)\n• Sin elástico ni esquineros', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80' },
-    { id: 'intermedia', nombre: 'Versión Intermedia (Personalizable)', precio: 19990, desc: '• 100 hojas de 105g (Mayor grosor)\n• Con esquineros metálicos protectores\n• Elige Portadas y Guardas personalizadas', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80' },
-    { id: 'full', nombre: 'Versión Full (Premium)', precio: 24990, desc: '• 120 hojas de 105g extra premium\n• Con esquineros metálicos y elástico de cierre\n• Elige Portadas, Guardas y Marcalibros de regalo', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80' }
+    { id: 'intermedia', nombre: 'Versión Intermedia (Personalizable)', precio: 19990, desc: '• 100 hojas de 105g (Mayor grosor)\n• Con esquineros metálicos protectores\n• Elige Portadas, Guardas y hojas', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', destacada: true },
+    { id: 'full', nombre: 'Versión Full (Premium)', precio: 24990, desc: '• 120 hojas de 105g extra premium\n• Con esquineros metálicos y elástico de cierre\n• Personalización total + Marcalibros de regalo', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80' }
 ];
 
 const tematicasAgenda = [
@@ -20,7 +32,6 @@ const tematicasAgenda = [
     { id: 'estelar', nombre: 'Galaxia & Estrellas', img: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=400&auto=format&fit=crop&q=80' }
 ];
 
-// AGENDAS YA LISTAS PARA COMPRAR DIRECTO EN LA HOME
 const agendasListas = [
     {
         nombre: 'Agenda Emprendedora - Edición Snoopy',
@@ -47,36 +58,59 @@ const agendasListas = [
 
 const opcionesSecciones = {
     portada: [
-        { id: 'portada1', nombre: 'Portada Estilo 1', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&auto=format&fit=crop&q=80' },
-        { id: 'portada2', nombre: 'Portada Estilo 2', img: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=300&auto=format&fit=crop&q=80' },
-        { id: 'portada3', nombre: 'Portada Estilo 3', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300&auto=format&fit=crop&q=80' }
+        { id: 'Portada Diseño 1', nombre: 'Portada Diseño 1', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Portada Diseño 2', nombre: 'Portada Diseño 2', img: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Portada Diseño 3', nombre: 'Portada Diseño 3', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300&auto=format&fit=crop&q=80' }
     ],
     guarda: [
-        { id: 'guarda1', nombre: 'Guarda Diseño A', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=300&auto=format&fit=crop&q=80' },
-        { id: 'guarda2', nombre: 'Guarda Diseño B', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&auto=format&fit=crop&q=80' },
-        { id: 'guarda3', nombre: 'Guarda Diseño C', img: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=300&auto=format&fit=crop&q=80' }
+        { id: 'Guarda Diseño A', nombre: 'Guarda Diseño A', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Guarda Diseño B', nombre: 'Guarda Diseño B', img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Guarda Diseño C', nombre: 'Guarda Diseño C', img: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=300&auto=format&fit=crop&q=80' }
     ],
     planner: [
-        { id: 'mensual', nombre: 'Planner Mensual', img: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=300&auto=format&fit=crop&q=80' },
-        { id: 'semanal', nombre: 'Planner Semanal', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=300&auto=format&fit=crop&q=80' }
+        { id: 'Planner Mensual', nombre: 'Planner Mensual', img: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Planner Semanal', nombre: 'Planner Semanal', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=300&auto=format&fit=crop&q=80' }
     ],
     rayado: [
-        { id: 'linea', nombre: 'Todas de una línea', img: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=300&auto=format&fit=crop&q=80' },
-        { id: 'cuadros', nombre: 'Todas cuadriculadas', img: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=300&auto=format&fit=crop&q=80' },
-        { id: 'mix', nombre: 'Mix (Mitad y Mitad)', img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=300&auto=format&fit=crop&q=80' }
+        { id: 'Todas de una línea', nombre: 'Todas de una línea', img: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Todas cuadriculadas', nombre: 'Todas cuadriculadas', img: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Mix (Mitad y Mitad)', nombre: 'Mix (Mitad y Mitad)', img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=300&auto=format&fit=crop&q=80' }
     ],
     fondo: [
-        { id: 'sinfondo', nombre: 'Sin fondo (Solo rayado)', img: 'https://images.unsplash.com/photo-1606819717115-915995007dc7?w=300&auto=format&fit=crop&q=80' },
-        { id: 'marca1', nombre: 'Marca de agua Tipo 1', img: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=300&auto=format&fit=crop&q=80' },
-        { id: 'marca2', nombre: 'Marca de agua Tipo 2', img: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=300&auto=format&fit=crop&q=80' }
+        { id: 'Sin fondo (Solo rayado)', nombre: 'Sin fondo (Solo rayado)', img: 'https://images.unsplash.com/photo-1606819717115-915995007dc7?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Marca de agua Dibujo 1', nombre: 'Marca de agua Dibujo 1', img: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Marca de agua Dibujo 2', nombre: 'Marca de agua Dibujo 2', img: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=300&auto=format&fit=crop&q=80' }
     ],
     marcalibros: [
-        { id: 'marca_regalo1', nombre: 'Marcalibros 1', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=300&auto=format&fit=crop&q=80' },
-        { id: 'marca_regalo2', nombre: 'Marcalibros 2', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=300&auto=format&fit=crop&q=80' },
-        { id: 'marca_regalo3', nombre: 'Marcalibros 3', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=300&auto=format&fit=crop&q=80' }
+        { id: 'Marcalibros Diseño 1', nombre: 'Marcalibros Diseño 1', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Marcalibros Diseño 2', nombre: 'Marcalibros Diseño 2', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=300&auto=format&fit=crop&q=80' },
+        { id: 'Marcalibros Diseño 3', nombre: 'Marcalibros Diseño 3', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=300&auto=format&fit=crop&q=80' }
     ]
 };
 
+// =========================================================================
+// DATOS PARA LOS CARRUSELES CRUZADOS (ALTERNANDO FOTO Y VIDEO)
+// Reemplaza las URLs por tus propias fotos (.jpg/.png) y videos cortos (.mp4)
+// =========================================================================
+const itemsCarrusel1 = [
+    { tipo: 'foto', src: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', etiqueta: 'Agenda Full Snoopy' },
+    { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-woman-writing-in-a-notebook-4240-large.mp4', etiqueta: 'Hoja 105g en vivo' },
+    { tipo: 'foto', src: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&auto=format&fit=crop&q=80', etiqueta: 'Detalles interiores' },
+    { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-writing-in-a-diary-4238-large.mp4', etiqueta: 'Planner Semanal' },
+    { tipo: 'foto', src: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&auto=format&fit=crop&q=80', etiqueta: 'Edición Botánica' }
+];
+
+const itemsCarrusel2 = [
+    { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-girl-writing-in-her-journal-4239-large.mp4', etiqueta: 'Acabado artesanal' },
+    { tipo: 'foto', src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&auto=format&fit=crop&q=80', etiqueta: 'Agenda Maestras' },
+    { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-woman-writing-in-a-notebook-4240-large.mp4', etiqueta: 'Esquineros y elástico' },
+    { tipo: 'foto', src: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', etiqueta: 'Pedido listo Santiago' },
+    { tipo: 'foto', src: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&auto=format&fit=crop&q=80', etiqueta: 'Emprendedoras' }
+];
+
+// =========================================================================
+// ESTADO Y ELEMENTOS DEL DOM
+// =========================================================================
 let currentStep = 1;
 let selectedConfig = {
     tipo: null,
@@ -87,9 +121,6 @@ let selectedConfig = {
 };
 
 const modal = document.getElementById('configModal');
-const openModalBtn = document.getElementById('openModalBtn');
-const openModalNavBtn = document.getElementById('openModalNavBtn');
-const closeModalBtn = document.getElementById('closeModalBtn');
 const nextStepBtn = document.getElementById('nextStepBtn');
 const prevStepBtn = document.getElementById('prevStepBtn');
 const stepIndicatorMain = document.getElementById('stepIndicatorMain');
@@ -97,21 +128,28 @@ const stepIndicatorSub = document.getElementById('stepIndicatorSub');
 const helpWhatsappBtn = document.getElementById('helpWhatsappBtn');
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderReadyAgendas();
+    checkLiveSchedule();
+    renderHomeSections();
+    renderCarousels();
     renderStep1();
     renderStep2();
     renderStep3();
     renderStep4();
     checkURLParameters();
 
+    // Abrir / Cerrar modal
     const openModal = () => modal.classList.add('active');
-    openModalBtn.addEventListener('click', openModal);
-    openModalNavBtn.addEventListener('click', openModal);
-    closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
+    document.getElementById('openModalBtn').addEventListener('click', openModal);
+    document.getElementById('openModalNavBtn').addEventListener('click', openModal);
+    document.getElementById('openModalCatalogBtn').addEventListener('click', openModal);
+    document.getElementById('openModalLiveBtn').addEventListener('click', openModal);
+    document.getElementById('closeModalBtn').addEventListener('click', () => modal.classList.remove('active'));
 
+    // Navegación pasos
     nextStepBtn.addEventListener('click', () => { if (currentStep < 4) { currentStep++; updateStepView(); } });
     prevStepBtn.addEventListener('click', () => { if (currentStep > 1) { currentStep--; updateStepView(); } });
 
+    // Selección de envío
     document.querySelectorAll('input[name="shipping"]').forEach(radio => {
         radio.addEventListener('change', (e) => {
             selectedConfig.envio = e.target.value;
@@ -119,41 +157,131 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const zoomModal = document.getElementById('imageZoomModal');
-    document.getElementById('closeZoomBtn').addEventListener('click', () => zoomModal.classList.remove('active'));
+    // Zoom de imagen
+    document.getElementById('closeZoomBtn').addEventListener('click', () => {
+        document.getElementById('imageZoomModal').classList.remove('active');
+    });
 
+    // Resumen desplegable
     document.getElementById('toggleSummaryBtn').addEventListener('click', () => {
         const box = document.getElementById('summaryBox');
         box.style.display = box.style.display === 'none' ? 'block' : 'none';
         updateSummaryContent();
     });
 
+    // Modal Amiga: validación estricta solo números (máx 8)
     const friendModal = document.getElementById('friendModal');
+    const friendInput = document.getElementById('friendPhoneInput');
+    friendInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 8);
+    });
+
     document.getElementById('openFriendModalBtn').addEventListener('click', () => friendModal.classList.add('active'));
     document.getElementById('cancelFriendBtn').addEventListener('click', () => friendModal.classList.remove('active'));
     document.getElementById('submitFriendBtn').addEventListener('click', sendToFriend);
 });
 
-function renderReadyAgendas() {
-    const grid = document.getElementById('readyAgendasGrid');
-    grid.innerHTML = agendasListas.map(item => `
+// =========================================================================
+// HERO DINÁMICO PARA LIVES (VIERNES 21:00 A 23:00 HRS)
+// =========================================================================
+function checkLiveSchedule() {
+    const now = new Date();
+    const day = now.getDay(); // 0 = Domingo
+    const hour = now.getHours();
+
+    const isLiveNow = FORZAR_MODO_LIVE || (day === 0 && hour >= 3 && hour < 4);
+
+    const hero = document.getElementById('mainHero');
+    const normalContent = document.getElementById('heroNormalContent');
+    const liveContent = document.getElementById('heroLiveContent');
+
+    if (isLiveNow) {
+        hero.classList.add('is-live');
+        normalContent.style.display = 'none';
+        liveContent.style.display = 'block';
+    } else {
+        hero.classList.remove('is-live');
+        normalContent.style.display = 'block';
+        liveContent.style.display = 'none';
+    }
+}
+
+// =========================================================================
+// RENDERIZADO DE LA PÁGINA PRINCIPAL (HOME)
+// =========================================================================
+function renderHomeSections() {
+    // Bloque 4A: 4 Categorías
+    document.getElementById('homeCategoriesGrid').innerHTML = tiposAgenda.map(item => `
+        <div class="home-cat-card">
+            <img src="${item.img}" alt="${item.nombre}">
+            <h3>${item.nombre}</h3>
+            <p>${item.desc}</p>
+        </div>
+    `).join('');
+
+    // Bloque 4B: 3 Versiones de Precio
+    document.getElementById('homePricingGrid').innerHTML = versionesAgenda.map(item => `
+        <div class="home-price-card ${item.destacada ? 'featured' : ''}">
+            ${item.destacada ? '<span class="popular-badge">Más elegida</span>' : ''}
+            <h3>${item.nombre}</h3>
+            <div class="home-price-amount">$${item.precio.toLocaleString('es-CL')}</div>
+            <p>${item.desc}</p>
+            <button onclick="openModalWithVersion('${item.id}')" class="btn-secondary-hero" style="width:100%; padding: 0.7rem;">Elegir esta versión</button>
+        </div>
+    `).join('');
+
+    // Vitrina Agendas Listas
+    document.getElementById('readyAgendasGrid').innerHTML = agendasListas.map(item => `
         <div class="ready-card">
             <img src="${item.img}" alt="${item.nombre}">
             <div class="ready-card-body">
                 <h3>${item.nombre}</h3>
                 <p>${item.desc}</p>
                 <div class="ready-price">$${item.precio.toLocaleString('es-CL')}</div>
-                <a href="https://wa.me/56900000000?text=${encodeURIComponent(item.mensajeWa)}" target="_blank" class="btn-buy-ready">
-                    <i class="fa-brands fa-whatsapp"></i> Comprar esta agenda
+                <a href="https://wa.me/${WHATSAPP_PYME}?text=${encodeURIComponent(item.mensajeWa)}" target="_blank" class="btn-buy-ready">
+                    <i class="fa-brands fa-whatsapp"></i> Pedir directo
                 </a>
             </div>
         </div>
     `).join('');
 }
 
+function openModalWithVersion(versionId) {
+    selectedConfig.version = versionId;
+    renderStep2();
+    renderStep4();
+    modal.classList.add('active');
+    currentStep = 1;
+    updateStepView();
+}
+
+// =========================================================================
+// CARRUSELES CRUZADOS INFINITOS (BLOQUE 5)
+// =========================================================================
+function renderCarousels() {
+    const buildTrackHTML = (items) => {
+        // Duplicamos el arreglo para crear el bucle infinito fluido sin saltos
+        const doubled = [...items, ...items];
+        return doubled.map(media => `
+            <div class="media-card">
+                <span class="media-badge">${media.etiqueta}</span>
+                ${media.tipo === 'video' 
+                    ? `<video src="${media.src}" autoplay loop muted playsinline></video>` 
+                    : `<img src="${media.src}" alt="${media.etiqueta}">`
+                }
+            </div>
+        `).join('');
+    };
+
+    document.getElementById('carouselRow1').innerHTML = buildTrackHTML(itemsCarrusel1);
+    document.getElementById('carouselRow2').innerHTML = buildTrackHTML(itemsCarrusel2);
+}
+
+// =========================================================================
+// PASOS DEL CONFIGURADOR MODAL
+// =========================================================================
 function renderStep1() {
-    const grid = document.getElementById('tipoAgendaGrid');
-    grid.innerHTML = tiposAgenda.map(item => `
+    document.getElementById('tipoAgendaGrid').innerHTML = tiposAgenda.map(item => `
         <div class="option-card ${selectedConfig.tipo === item.id ? 'selected' : ''}" onclick="selectTipo('${item.id}')">
             <div class="option-img-container" onclick="event.stopPropagation(); openZoom('${item.img}')">
                 <img src="${item.img}" alt="${item.nombre}">
@@ -169,20 +297,19 @@ function renderStep1() {
 function selectTipo(id) { selectedConfig.tipo = id; renderStep1(); validateStep(); }
 
 function renderStep2() {
-    const grid = document.getElementById('versionGrid');
-    grid.innerHTML = versionesAgenda.map(item => `
+    document.getElementById('versionGrid').innerHTML = versionesAgenda.map(item => `
         <div class="option-card ${selectedConfig.version === item.id ? 'selected' : ''}" onclick="selectVersion('${item.id}')">
             <div style="display: flex; gap: 1rem; align-items: center; width: 100%; text-align: left;">
-                <div class="option-img-container" style="width: 120px; height: 100px; margin-bottom: 0;" onclick="event.stopPropagation(); openZoom('${item.img}')">
+                <div class="option-img-container" style="width: 115px; height: 95px; margin-bottom: 0; flex-shrink: 0;" onclick="event.stopPropagation(); openZoom('${item.img}')">
                     <img src="${item.img}" alt="${item.nombre}">
                 </div>
                 <div style="flex: 1;">
                     <h3>${item.nombre}</h3>
-                    <p style="white-space: pre-line; margin-bottom: 0.5rem;">${item.desc}</p>
+                    <p style="white-space: pre-line; margin-bottom: 0.4rem;">${item.desc}</p>
                     <div class="option-price">$${item.precio.toLocaleString('es-CL')}</div>
                 </div>
             </div>
-            <button class="btn-select-card" style="margin-top: 1rem;">${selectedConfig.version === item.id ? 'Seleccionado' : 'Elegir'}</button>
+            <button class="btn-select-card" style="margin-top: 0.8rem;">${selectedConfig.version === item.id ? 'Seleccionado' : 'Elegir'}</button>
         </div>
     `).join('');
 }
@@ -190,8 +317,7 @@ function renderStep2() {
 function selectVersion(id) { selectedConfig.version = id; renderStep2(); renderStep4(); validateStep(); }
 
 function renderStep3() {
-    const grid = document.getElementById('tematicaGrid');
-    grid.innerHTML = tematicasAgenda.map(item => `
+    document.getElementById('tematicaGrid').innerHTML = tematicasAgenda.map(item => `
         <div class="option-card tematica-card ${selectedConfig.tematica === item.id ? 'selected' : ''}" onclick="selectTematica('${item.id}')">
             <div class="option-img-container" onclick="event.stopPropagation(); openZoom('${item.img}')">
                 <img src="${item.img}" alt="${item.nombre}">
@@ -211,8 +337,8 @@ function renderStep4() {
     if (selectedConfig.version === 'full') seccionesActivas.push('marcalibros');
 
     const titles = {
-        portada: 'Portada / Contraportada (Elige 1 de 3)',
-        guarda: 'Diseño de Guarda (Elige 1 de 3)',
+        portada: 'Portada / Contraportada',
+        guarda: 'Diseño de Guarda',
         planner: 'Tipo de Planner',
         rayado: 'Tipo de Rayado en Hoja',
         fondo: 'Fondo de la Hoja',
@@ -231,7 +357,7 @@ function renderStep4() {
                                 <img src="${opt.img}" alt="${opt.nombre}">
                             </div>
                             <span>${opt.nombre}</span>
-                            <button class="btn-select-card" style="padding: 0.2rem 0.8rem; font-size: 0.8rem;">${selectedConfig.secciones[secKey] === opt.id ? 'Elegido' : 'Elegir'}</button>
+                            <button class="btn-select-card" style="padding: 0.25rem 0.8rem; font-size: 0.8rem;">${selectedConfig.secciones[secKey] === opt.id ? 'Elegido' : 'Elegir'}</button>
                         </div>
                     `).join('')}
                 </div>
@@ -267,6 +393,9 @@ function checkStep4Completion() {
     if (todasSeccionesElegidas && envioElegido) {
         finalActions.style.display = 'block';
         updateWhatsappLinks();
+        if (document.getElementById('summaryBox').style.display === 'block') {
+            updateSummaryContent();
+        }
     } else {
         finalActions.style.display = 'none';
     }
@@ -296,17 +425,19 @@ function updateStepView() {
 }
 
 function openZoom(imgSrc) {
-    const zoomModal = document.getElementById('imageZoomModal');
     document.getElementById('zoomedImg').src = imgSrc;
-    zoomModal.classList.add('active');
+    document.getElementById('imageZoomModal').classList.add('active');
 }
 
+// =========================================================================
+// RESUMEN Y ENVÍO A WHATSAPP / AMIGA
+// =========================================================================
 function getResumenTexto() {
     const tipoObj = tiposAgenda.find(x => x.id === selectedConfig.tipo);
     const verObj = versionesAgenda.find(x => x.id === selectedConfig.version);
     const temObj = tematicasAgenda.find(x => x.id === selectedConfig.tematica);
 
-    let costoEnvio = selectedConfig.envio === 'santiago' ? 2990 : 0;
+    let costoEnvio = selectedConfig.envio === 'santiago' ? COSTO_ENVIO_SANTIAGO : 0;
     let total = verObj.precio + costoEnvio;
 
     let texto = `Hola Kokomarú, quiero encargar esta agenda:\n\n`;
@@ -321,19 +452,18 @@ function getResumenTexto() {
     if (selectedConfig.version === 'full') {
         texto += `• Marcalibros: ${selectedConfig.secciones.marcalibros || '-'}\n`;
     }
-    texto += `• Envío: ${selectedConfig.envio === 'santiago' ? 'Santiago ($2.990)' : 'Regiones (Blue Express - A coordinar)'}\n`;
-    texto += `\n*TOTAL A PAGAR:* $${total.toLocaleString('es-CL')}${selectedConfig.envio === 'regiones' ? ' + envío' : ''}`;
+    texto += `• Envío: ${selectedConfig.envio === 'santiago' ? `Santiago ($${COSTO_ENVIO_SANTIAGO.toLocaleString('es-CL')})` : 'Regiones (Blue Express - Monto a coordinar por WhatsApp)'}\n`;
+    texto += `\n*TOTAL:* $${total.toLocaleString('es-CL')}${selectedConfig.envio === 'regiones' ? ' + envío a coordinar' : ''}`;
 
     return texto;
 }
 
 function updateSummaryContent() {
     const verObj = versionesAgenda.find(x => x.id === selectedConfig.version);
-    let costoEnvio = selectedConfig.envio === 'santiago' ? 2990 : 0;
+    let costoEnvio = selectedConfig.envio === 'santiago' ? COSTO_ENVIO_SANTIAGO : 0;
     let total = verObj.precio + costoEnvio;
 
-    const box = document.getElementById('summaryBox');
-    box.innerHTML = `
+    document.getElementById('summaryBox').innerHTML = `
         <ul>
             <li><strong>Tipo:</strong> ${tiposAgenda.find(x => x.id === selectedConfig.tipo)?.nombre}</li>
             <li><strong>Versión:</strong> ${verObj.nombre}</li>
@@ -344,26 +474,27 @@ function updateSummaryContent() {
             <li><strong>Rayado:</strong> ${selectedConfig.secciones.rayado}</li>
             <li><strong>Fondo:</strong> ${selectedConfig.secciones.fondo}</li>
             ${selectedConfig.version === 'full' ? `<li><strong>Marcalibros:</strong> ${selectedConfig.secciones.marcalibros}</li>` : ''}
-            <li><strong>Envío:</strong> ${selectedConfig.envio === 'santiago' ? 'Santiago ($2.990)' : 'Regiones (A coordinar)'}</li>
+            <li><strong>Envío:</strong> ${selectedConfig.envio === 'santiago' ? `Santiago ($${COSTO_ENVIO_SANTIAGO.toLocaleString('es-CL')})` : 'Regiones (Monto a coordinar por WhatsApp)'}</li>
         </ul>
-        <div class="summary-total">Total: $${total.toLocaleString('es-CL')}${selectedConfig.envio === 'regiones' ? ' (+ envío)' : ''}</div>
+        <div class="summary-total">Total: $${total.toLocaleString('es-CL')}${selectedConfig.envio === 'regiones' ? ' (Envío: monto a coordinar por WhatsApp)' : ''}</div>
     `;
 }
 
 function updateWhatsappLinks() {
-    const texto = getResumenTexto();
-    const encoded = encodeURIComponent(texto);
-    document.getElementById('sendOrderWhatsappBtn').href = `https://wa.me/56900000000?text=${encoded}`;
+    const encoded = encodeURIComponent(getResumenTexto());
+    document.getElementById('sendOrderWhatsappBtn').href = `https://wa.me/${WHATSAPP_PYME}?text=${encoded}`;
 }
 
 function sendToFriend() {
     const phoneInput = document.getElementById('friendPhoneInput').value.trim();
-    if (phoneInput.length !== 8 || isNaN(phoneInput)) {
-        alert('Por favor ingresa un número válido de 8 dígitos.');
+    if (phoneInput.length !== 8 || !/^\d{8}$/.test(phoneInput)) {
+        alert('Por favor ingresa los 8 dígitos del número celular.');
         return;
     }
 
     const fullPhone = `569${phoneInput}`;
+    const temObj = tematicasAgenda.find(x => x.id === selectedConfig.tematica);
+
     const params = new URLSearchParams({
         t: selectedConfig.tipo || '',
         v: selectedConfig.version || '',
@@ -379,7 +510,9 @@ function sendToFriend() {
 
     const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
     const resumen = getResumenTexto();
-    const mensajeAmiga = `¡Hola! Mira la agenda Kokomarú que estoy armando:\n\n${resumen}\n\n¿Qué te parece? Puedes verla y cambiar opciones aquí:\n${shareUrl}`;
+
+    // Incluye el enlace directo a la imagen de la temática elegida para vista previa en WhatsApp + el link interactivo
+    const mensajeAmiga = `¡Hola! Mira la agenda Kokomarú que estoy armando:\n\n${resumen}\n\nVista de la temática (${temObj ? temObj.nombre : ''}):\n${temObj ? temObj.img : ''}\n\nSi quieres verla o cambiar alguna opción, entra aquí (se abrirá en una ventana nueva):\n${shareUrl}`;
     
     window.open(`https://wa.me/${fullPhone}?text=${encodeURIComponent(mensajeAmiga)}`, '_blank');
     document.getElementById('friendModal').classList.remove('active');
@@ -409,8 +542,10 @@ function checkURLParameters() {
             renderStep3();
             renderStep4();
             if (selectedConfig.envio) {
-                document.getElementById(selectedConfig.envio === 'santiago' ? 'shipSantiago' : 'shipRegiones').checked = true;
+                const radio = document.getElementById(selectedConfig.envio === 'santiago' ? 'shipSantiago' : 'shipRegiones');
+                if (radio) radio.checked = true;
+                checkStep4Completion();
             }
-        }, 500);
+        }, 300);
     }
 }

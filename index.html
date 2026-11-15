@@ -3,114 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kokomarú - Agendas Personalizadas y Exclusivas</title>
+    <title>Kokomarú | Agendas Personalizadas | Santiago de Chile</title>
+    
+    <!-- SEO Principal -->
+    <meta name="description" content="Ordena tu mundo, disfruta tu vida. con kokomarú puedes combinar los diseños que mas te gusten, da un paso al frente y muestrale al mundo tu personalidad">
+    <meta name="keywords" content="agendas personalizadas, agendas chile, agendas chile, agendas, kokomaru">
+    <meta name="author" content="Kokomarú">
+    <meta name="geo.region" content="CL-RM">
+    <meta name="geo.placename" content="Santiago">
+
+    <!-- Open Graph / Redes Sociales y WhatsApp -->
+    <meta property="og:title" content="Kokomarú, para tus lindos momentos">
+    <meta property="og:description" content="ordena tu mundo, disfruta tu vida. con kokomarú puedes combinar los diseños que mas te gusten, da un paso al frente y muestrale al mundo tu personalidad">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tudominio.cl">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1544816155-12df9643f363?w=1200&auto=format&fit=crop&q=80">
+
+    <!-- Fuentes e Íconos -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR / HEADER DE LA TIENDA -->
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-brand">Kokomarú</div>
         <div class="nav-links">
-            <a href="#destacadas">Agendas Listas</a>
-            <a href="#como-funciona">Cómo Funciona</a>
-            <button id="openModalNavBtn" class="btn-nav-custom">Arma la tuya</button>
+            <a href="#categorias">Agendas</a>
+            <a href="#precios">Versiones</a>
+            <a href="#catalogo-info">Personalizar</a>
+            <button id="openModalNavBtn" class="btn-nav-custom">Arma tu agenda</button>
         </div>
     </nav>
 
-    <!-- HERO SECTION PRINCIPAL -->
-    <header class="hero">
-        <div class="hero-content">
-            <span class="brand-tag">Papelería con Amor & Diseño</span>
-            <h1>Organiza tus días con estilo y ternura</h1>
-            <p>Elige una de nuestras agendas exclusivas ya listas para despacho o diseña cada detalle de tu planner ideal paso a paso.</p>
+    <!-- HERO DINÁMICO (MODO NORMAL vs MODO LIVE VIERNES) -->
+    <header id="mainHero" class="hero">
+        <!-- Contenido Modo Normal -->
+        <div id="heroNormalContent" class="hero-content">
+            <span class="brand-tag">Papelería con Propósito & Diseño</span>
+            <h1>¿Sientes que el día se te va de las manos entre el caos y las ideas sueltas?</h1>
+            <p class="hero-copy">No necesitas trabajar más duro. Necesitas un sistema creado a tu medida que transforme el desorden en metas cumplidas, con un diseño tan lindo que te dé gusto abrirlo cada mañana.</p>
             <div class="hero-buttons">
-                <button id="openModalBtn" class="btn-primary">Arma tu agenda desde cero</button>
-                <a href="#destacadas" class="btn-secondary-hero">Ver agendas listas</a>
+                <button id="openModalBtn" class="btn-primary">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Diseñar mi agenda ahora
+                </button>
+                <a href="#agendas-listas" class="btn-secondary-hero">Ver ediciones listas</a>
+            </div>
+        </div>
+
+        <!-- Contenido Modo LIVE (Activo automáticamente los viernes de 21:00 a 23:00 hrs) -->
+        <div id="heroLiveContent" class="hero-content live-mode" style="display: none;">
+            <span class="live-badge"><span class="pulse-dot"></span> TRANSMITIENDO EN VIVO EN TIKTOK</span>
+            <h1>¡Llegó el Viernes de Live Selling en Kokomarú!</h1>
+            <p class="hero-copy">Solo mientras dure esta transmisión: llévate nuestras ediciones especiales con <strong>Envío Gratis + Llavero y Lapicero de regalo</strong>. Cupos estrictamente limitados (20 unidades).</p>
+            <div class="hero-buttons">
+                <a id="tiktokLiveLink" href="https://www.tiktok.com/@tu_usuario_kokomaru/live" target="_blank" class="btn-live-cta">
+                    <i class="fa-brands fa-tiktok"></i> Entrar al Live y reclamar promoción
+                </a>
+                <button id="openModalLiveBtn" class="btn-secondary-hero">Armar agenda regular</button>
             </div>
         </div>
     </header>
 
-    <!-- SECCIÓN: CÓMO FUNCIONA -->
-    <section id="como-funciona" class="section-container">
-        <h2>¿Cómo funciona Kokomarú?</h2>
-        <p class="section-desc">Queremos que tengas exactamente lo que buscas en pocos minutos:</p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
-                <h3>1. Elige tu Estilo</h3>
-                <p>Emprendedoras, maestras, universitarias o de uso diario creadas para tu ritmo.</p>
+    <!-- BARRA DE CONTACTO RÁPIDO Y REDES -->
+    <section class="social-bar">
+        <a href="https://wa.me/56900000000?text=Hola%20Kokomar%C3%BA,%20quiero%20hacer%20una%20consulta" target="_blank" class="social-pill wa">
+            <i class="fa-brands fa-whatsapp"></i> Escríbenos por WhatsApp
+        </a>
+        <a href="https://www.tiktok.com/@tu_usuario_kokomaru" target="_blank" class="social-pill tt">
+            <i class="fa-brands fa-tiktok"></i> Síguenos en TikTok (Lives Viernes)
+        </a>
+        <a href="https://www.instagram.com/tu_usuario_kokomaru" target="_blank" class="social-pill ig">
+            <i class="fa-brands fa-instagram"></i> Instagram @Kokomaru
+        </a>
+    </section>
+
+    <!-- BLOQUE 4A: LAS 4 CATEGORÍAS DE AGENDAS -->
+    <section id="categorias" class="section-container">
+        <h2>Una agenda pensada para tu ritmo de vida</h2>
+        <p class="section-desc">No hacemos libretas genéricas. Creamos estructuras internas diseñadas para lo que realmente haces cada día:</p>
+        <div class="categories-showcase-grid" id="homeCategoriesGrid">
+            <!-- Inyectado por JS -->
+        </div>
+    </section>
+
+    <!-- BLOQUE 4B: LOS 3 NIVELES DE PRECIOS / CALIDAD -->
+    <section id="precios" class="section-container bg-soft-pink">
+        <h2>Elige el nivel de detalle que mereces</h2>
+        <p class="section-desc">Tres versiones claras, sin letras chicas, para que inviertas exactamente en lo que buscas:</p>
+        <div class="pricing-showcase-grid" id="homePricingGrid">
+            <!-- Inyectado por JS -->
+        </div>
+    </section>
+
+    <!-- SECCIÓN DEDICADA AL CATÁLOGO Y PERSONALIZACIÓN -->
+    <section id="catalogo-info" class="section-container">
+        <div class="catalog-banner">
+            <div class="catalog-text">
+                <span class="brand-tag">Tu agenda, tus reglas</span>
+                <h2>Explora nuestro catálogo y combina cada sección a tu gusto</h2>
+                <p>A diferencia de las tiendas tradicionales donde compras lo que hay, en <strong>Kokomarú</strong> tú tienes el control total. Entra a nuestro configurador interactivo y elige:</p>
+                <ul class="catalog-checklist">
+                    <li><i class="fa-solid fa-check"></i> <strong>Temática favorita:</strong> Snoopy, Botánica, Minimalista, Pastel y más.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Portada y Contraportada:</strong> Combina entre distintos diseños exclusivos.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Guarda interior y Tipo de Planner:</strong> Mensual o Semanal según tu método.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Hojas y Fondo:</strong> Rayado de una línea, cuadriculado o mixto, con o sin marca de agua.</li>
+                </ul>
+                <button id="openModalCatalogBtn" class="btn-primary">
+                    <i class="fa-solid fa-palette"></i> Abrir catálogo y armar mi agenda
+                </button>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
-                <h3>2. Selecciona tu Versión</h3>
-                <p>Tres rangos de precios (Económica, Intermedia y Full) adaptados a lo que necesitas.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                <h3>3. Personaliza o Compra</h3>
-                <p>Arma portadas, guardas, rayados y planners o llévate una edición lista recomendada.</p>
+            <div class="catalog-visual">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80" alt="Catálogo Kokomarú">
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN: AGENDAS DESTACADAS / LISTAS PARA COMPRAR -->
-    <section id="destacadas" class="section-container bg-light">
-        <h2>Agendas Listas para Enviar</h2>
-        <p class="section-desc">¿Te enamoraste de un diseño? Pídelo directamente sin pasar por el configurador:</p>
+    <!-- VITRINA DE AGENDAS LISTAS PARA ENVIAR -->
+    <section id="agendas-listas" class="section-container bg-soft-blue">
+        <h2>Ediciones Listas para Despacho</h2>
+        <p class="section-desc">¿Quieres algo rápido sin configurar? Llévate estas combinaciones favoritas ya armadas:</p>
         <div class="ready-grid" id="readyAgendasGrid">
             <!-- Inyectado por JS -->
         </div>
     </section>
 
+    <!-- BLOQUE 5: DOS CARRUSELES INFINITOS CRUZADOS (FOTOS Y VIDEOS) -->
+    <section class="social-proof-section">
+        <div class="section-header-center">
+            <h2>La comunidad Kokomarú en acción</h2>
+            <p>Así se ven nuestras agendas reales en manos de emprendedoras, profes y estudiantes:</p>
+        </div>
+
+        <!-- Carrusel 1: Se mueve de derecha a izquierda -->
+        <div class="marquee-wrapper">
+            <div class="marquee-track track-left" id="carouselRow1">
+                <!-- Inyectado por JS -->
+            </div>
+        </div>
+
+        <!-- Carrusel 2: Se mueve de izquierda a derecha -->
+        <div class="marquee-wrapper" style="margin-top: 1.2rem;">
+            <div class="marquee-track track-right" id="carouselRow2">
+                <!-- Inyectado por JS -->
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
-        <p>Kokomarú • Hecho con dedicación en Santiago, Chile 🌸</p>
+        <p><strong>Kokomarú</strong> • Papelería Artesanal y Personalizada • Santiago, Chile</p>
+        <p class="footer-note">Promociones exclusivas de Live Selling válidas únicamente durante las transmisiones en vivo en TikTok.</p>
     </footer>
 
-    <!-- VENTANA EMERGENTE (MODAL) DEL CONFIGURADOR -->
+    <!-- ===================================================================== -->
+    <!-- VENTANA EMERGENTE (MODAL) DEL CONFIGURADOR PASO A PASO                -->
+    <!-- ===================================================================== -->
     <div id="configModal" class="modal-overlay">
         <div class="modal-container">
-            <button id="closeModalBtn" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <button id="closeModalBtn" class="modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
             
-            <!-- ENCABEZADO DE PASOS -->
+            <!-- ENCABEZADO DE PASOS (CORREGIDO PARA PC Y MÓVIL) -->
             <div class="modal-header">
                 <div class="step-indicator">
                     <span id="stepIndicatorMain">Paso 1 de 4</span>
                     <span id="stepIndicatorSub">Tipo de Agenda</span>
                 </div>
-                <a id="helpWhatsappBtn" href="https://wa.me/56900000000?text=Hola,%20tengo%20dudas%20para%20elegir%20mi%20agenda%20Kokomar%C3%B3" target="_blank" class="btn-help-wa">
+                <a id="helpWhatsappBtn" href="https://wa.me/56900000000?text=Hola%20Kokomar%C3%BA,%20tengo%20dudas%20para%20elegir%20mi%20agenda" target="_blank" class="btn-help-wa">
                     <i class="fa-brands fa-whatsapp"></i> ¿Dudas?
                 </a>
             </div>
 
-            <!-- CONTENEDOR DE LOS PASOS -->
+            <!-- CUERPO DEL CONFIGURADOR -->
             <div class="modal-body">
+                <!-- PASO 1 -->
                 <div class="step-content active" id="step1">
                     <h2>Elige tu tipo de agenda</h2>
                     <p class="step-subtitle">Selecciona la opción que mejor se adapte a tu estilo de vida:</p>
                     <div class="options-grid" id="tipoAgendaGrid"></div>
                 </div>
 
+                <!-- PASO 2 -->
                 <div class="step-content" id="step2">
                     <h2>Elige tu versión y calidad</h2>
                     <p class="step-subtitle">Escoge el nivel de acabado que prefieras:</p>
                     <div class="options-grid vertical-grid" id="versionGrid"></div>
                 </div>
 
+                <!-- PASO 3 -->
                 <div class="step-content" id="step3">
                     <h2>Elige tu temática favorita</h2>
                     <p class="step-subtitle">Selecciona el diseño visual que más te enamore:</p>
                     <div class="options-grid tematica-grid" id="tematicaGrid"></div>
                 </div>
 
+                <!-- PASO 4 -->
                 <div class="step-content" id="step4">
                     <h2>Personaliza los detalles de tu agenda</h2>
                     <p class="step-subtitle">Debes seleccionar una opción en cada sección:</p>
                     <div id="seccionesContainer"></div>
 
+                    <!-- SECCIÓN DE ENVÍO -->
                     <div class="shipping-section">
                         <h3>Método de Envío</h3>
                         <div class="shipping-options">
@@ -131,6 +225,7 @@
                         </div>
                     </div>
 
+                    <!-- BOTONES FINALES -->
                     <div class="final-actions" id="finalActionsSection" style="display: none;">
                         <button id="toggleSummaryBtn" class="btn-secondary">
                             <i class="fa-solid fa-list-check"></i> Resumen del pedido
@@ -171,14 +266,14 @@
         <img id="zoomedImg" src="" alt="Imagen ampliada">
     </div>
 
-    <!-- MODAL AMIGA -->
+    <!-- MODAL COMPARTIR CON AMIGA -->
     <div id="friendModal" class="friend-modal-overlay">
         <div class="friend-modal-content">
-            <h3>Enviar a tu amiga</h3>
-            <p>Ingresa el número de WhatsApp de tu amiga para pedirle su opinión:</p>
+            <h3>Compartir diseño por WhatsApp</h3>
+            <p>Ingresa los 8 dígitos del número de tu amiga:</p>
             <div class="phone-input-group">
                 <span class="prefix">+569</span>
-                <input type="tel" id="friendPhoneInput" maxlength="8" placeholder="12345678">
+                <input type="tel" id="friendPhoneInput" maxlength="8" placeholder="12345678" inputmode="numeric">
             </div>
             <div class="friend-modal-buttons">
                 <button id="cancelFriendBtn" class="btn-cancel">Cancelar</button>
