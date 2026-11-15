@@ -1223,24 +1223,56 @@ footer {
     flex: 1.4;
 }
 
-/* --- HERO LIVE A TODO LO ANCHO DE LA PANTALLA --- */
-header.live-mode-active, 
-.hero-content.live-mode {
-    width: 100vw !important;
+/* --- ELIMINAR CONTENEDOR Y EXPANDIR HERO LIVE A FULL WIDTH --- */
+.hero.live-mode, 
+#heroLiveContent.live-mode {
     position: relative;
+    width: 100vw !important;
+    max-width: 100vw !important;
     left: 50%;
     right: 50%;
     margin-left: -50vw !important;
     margin-right: -50vw !important;
     background: #0f0f11 !important; /* Fondo negro puro de TikTok */
-    border-radius: 0 !important;   /* Quitamos las esquinas redondeadas para que toque los bordes */
     border: none !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
-    padding: 60px 20px !important;
+    padding: 80px 20px !important;
+    box-sizing: border-box;
 }
 
-/* Aseguramos que el texto y contenido interno sí mantengan un ancho cómodo y centrado */
-.hero-content.live-mode {
-    max-width: 800px;
-    margin: 0 auto !important; /* Vuelve a centrar el contenido interno */
+/* Centramos el texto y los elementos internos para que no queden pegados a los bordes */
+#heroLiveContent.live-mode h1,
+#heroLiveContent.live-mode .hero-copy,
+#heroLiveContent.live-mode .tiktok-live-badge,
+#heroLiveContent.live-mode .hero-buttons {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#heroLiveContent.live-mode h1 {
+    color: #ffffff !important;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+#heroLiveContent.live-mode .hero-copy {
+    color: #b0b0b8 !important;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+#heroLiveContent.live-mode .btn-tiktok-live {
+    background: linear-gradient(135deg, #fe2c55, #25f4ee);
+    color: #ffffff !important;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(254, 44, 85, 0.4);
 }
