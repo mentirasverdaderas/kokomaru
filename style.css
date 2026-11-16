@@ -1396,3 +1396,13 @@ footer {
     width: auto;
     display: block;
 }
+/* --- REDUCIR LA FRANJA BLANCA DEL ENCABEZADO --- */
+header, nav, .navbar {
+    padding-top: 8px !important;    /* Reduce el espacio superior */
+    padding-bottom: 8px !important; /* Reduce el espacio inferior */
+}
+
+.navbar-logo {
+    height: 55px !important;        /* Mantiene tu logo grande y nítido */
+    width: auto !important;
+}
