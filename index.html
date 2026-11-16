@@ -152,78 +152,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-  <div class="footer-container">
-    
-    <!-- SECCIÓN SUPERIOR: 4 Columnas de navegación -->
-    <div class="footer-grid">
-      
-      <!-- Columna 1: Navegación en la página -->
-      <div class="footer-col">
-        <h4>Kokomarú</h4>
-        <ul>
-          <li><a href="#tribu">La Tribu Marú</a></li>
-          <li><a href="#agendas">Nuestras Agendas</a></li>
-          <li><a href="#versiones">Versiones y Estilos</a></li>
-          <li><a href="#armalas">Arma tu Agenda</a></li>
-          <li><a href="#galeria">Galería</a></li>
-        </ul>
-      </div>
-
-      <!-- Columna 2: Ayuda al cliente -->
-      <div class="footer-col">
-        <h4>Ayuda y Envíos</h4>
-        <ul>
-          <li><a href="politicas-envio.html">Políticas de envío</a></li>
-          <li><a href="tiempos-produccion.html">Tiempos de fabricación</a></li>
-          <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
-          <li><a href="como-comprar.html">Cómo personalizar</a></li>
-          <li><a href="contacto.html">Contacto y soporte</a></li>
-        </ul>
-      </div>
-
-      <!-- Columna 3: Legales (Imprescindibles para e-commerce) -->
-      <div class="footer-col">
-        <h4>Información Legal</h4>
-        <ul>
-          <li><a href="terminos-condiciones.html">Términos y condiciones</a></li>
-          <li><a href="politica-privacidad.html">Política de privacidad</a></li>
-          <li><a href="cambios-devoluciones.html">Cambios y devoluciones</a></li>
-          <li><a href="garantia-artesanal.html">Garantía de producto</a></li>
-        </ul>
-      </div>
-
-      <!-- Columna 4: Comunidad y Redes -->
-      <div class="footer-col">
-        <h4>Comunidad</h4>
-        <ul>
-          <li><a href="https://www.tiktok.com/@tu_usuario" target="_blank">TikTok Live</a></li>
-          <li><a href="https://www.instagram.com/tu_usuario" target="_blank">Instagram</a></li>
-          <li><a href="pedidos-corporativos.html">Pedidos por mayor / Regalos</a></li>
-          <li><a href="sobre-nosotros.html">Nuestra historia</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- DIVISOR CON LOGO EN EL CENTRO -->
-    <div class="footer-logo-divider">
-      <span class="divider-line"></span>
-      <!-- Reemplaza la ruta del src con la imagen de tu logo horizontal -->
-      <img src="svg/logo-horizontal.svg" alt="Kokomarú Logo" class="footer-center-logo">
-      <span class="divider-line"></span>
-    </div>
-
-    <!-- SECCIÓN INFERIOR: Tu texto exacto conservado -->
-    <div class="footer-bottom">
-      <p>Papelería Artesanal y Personalizada • Santiago, Chile</p>
-      <p>© 2026 Kokomarú; en tus lindos momentos • Página creada por <strong>Bosque Oscuro</strong></p>
-    </div>
-
-  </div>
-</footer>
-        
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <!-- ===================================================================== -->
     <!-- VENTANA EMERGENTE (MODAL) DEL CONFIGURADOR PASO A PASO                -->
@@ -350,6 +279,16 @@
         </div>
     </div>
 
+    <!-- Script para inyectar el footer dinámicamente -->
+<script>
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+</script>
+
+<!-- scripts de la página (modal, etc.) -->
     <script src="script.js"></script>
 </body>
 </html>
