@@ -1392,7 +1392,7 @@ footer {
 }
 
 .navbar-logo {
-    height: 140px; /* Ajusta este valor si lo quieres un poco más grande o más chico */
+    height: 90px; /* Ajusta este valor si lo quieres un poco más grande o más chico */
     width: auto;
     display: block;
 }
