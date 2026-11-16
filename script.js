@@ -142,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('openModalBtn').addEventListener('click', openModal);
     document.getElementById('openModalNavBtn').addEventListener('click', openModal);
     document.getElementById('openModalCatalogBtn').addEventListener('click', openModal);
-    document.getElementById('openModalLiveBtn').addEventListener('click', openModal);
     document.getElementById('closeModalBtn').addEventListener('click', () => modal.classList.remove('active'));
 
     // Navegación pasos
@@ -182,14 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // =========================================================================
-// HERO DINÁMICO PARA LIVES (VIERNES 21:00 A 23:00 HRS)
+// HERO DINÁMICO PARA LIVES (VIERNES 21:00 A 22:00 HRS)
 // =========================================================================
 function checkLiveSchedule() {
     const now = new Date();
-    const day = now.getDay(); // 0 = Domingo
+    const day = now.getDay(); // 5 = Viernes
     const hour = now.getHours();
 
-    const isLiveNow = FORZAR_MODO_LIVE || (day === 0 && hour >= 3 && hour < 4);
+    const isLiveNow = FORZAR_MODO_LIVE || (day === 5 && hour >= 21 && hour < 22);
 
     const hero = document.getElementById('mainHero');
     const normalContent = document.getElementById('heroNormalContent');
