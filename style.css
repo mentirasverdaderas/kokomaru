@@ -1383,3 +1383,16 @@ footer {
     gap: 10px;
   }
 }
+
+/* --- LOGO EN EL ENCABEZADO --- */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-logo {
+    height: 36px; /* Ajusta este valor si lo quieres un poco más grande o más chico */
+    width: auto;
+    display: block;
+}
