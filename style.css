@@ -1406,3 +1406,104 @@ header, nav, .navbar {
     height: 55px !important;        /* Mantiene tu logo grande y nítido */
     width: auto !important;
 }
+
+/* ========================================================================= */
+/* ESTILOS PÁGINA DE POLÍTICAS DE ENVÍO Y GARANTÍAS                          */
+/* ========================================================================= */
+.policies-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+}
+
+.policies-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.policies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.policy-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 1.8rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f3e8ee;
+}
+
+.policy-card.full-width-card {
+    grid-column: 1 / -1;
+}
+
+.policy-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #fff0f5;
+    color: var(--pink-dark, #e05a87);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.policy-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.9rem;
+    color: #333;
+}
+
+.policy-card p, .policy-card li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0.6rem;
+}
+
+.policy-card ul {
+    padding-left: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.legal-link-box {
+    background: #f8f9fa;
+    padding: 0.9rem;
+    border-radius: 10px;
+    border-left: 3px solid var(--pink-dark, #e05a87);
+    margin-top: 1rem;
+    font-size: 0.88rem !important;
+}
+
+.legal-link-box a {
+    color: var(--pink-dark, #e05a87);
+    font-weight: 600;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 0.3rem;
+}
+
+.policies-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #fff5f8;
+    border-radius: 18px;
+}
+
+.policies-cta p {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .policies-grid {
+        grid-template-columns: 1fr;
+    }
+}
