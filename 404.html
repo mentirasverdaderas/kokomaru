@@ -11,33 +11,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     
-    <!-- Estilo específico centrado para la 404 -->
+    <!-- Estilo específico para la 404 con fondo blanco -->
     <style>
+        body {
+            background-color: #ffffff !important;
+        }
         .error-container {
-            min-height: 70vh;
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
         }
         .error-code {
-            font-size: 6rem;
+            font-size: 5rem;
             font-weight: 700;
             color: var(--pink-dark, #e05a87);
             line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
         }
-        .error-card {
-            background: #ffffff;
-            border-radius: 18px;
-            padding: 2.5rem;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
-            border: 1px solid #f3e8ee;
-            max-width: 550px;
+        .error-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .error-image-container {
+            max-width: 280px;
             width: 100%;
-            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .error-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .error-funny-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--pink-dark, #e05a87);
+            margin-bottom: 0.8rem;
+        }
+        .error-desc {
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .error-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
     </style>
 </head>
@@ -59,20 +87,29 @@
     <!-- CONTENIDO 404 -->
     <main class="error-container">
         <div class="error-code">404</div>
-        <div class="error-card">
-            <div class="policy-icon" style="margin: 0 auto 1.2rem auto;"><i class="fa-solid fa-compass-drafting"></i></div>
-            <h2>¡Vaya! Nos perdimos de página</h2>
-            <p style="color: #666; margin-bottom: 1.5rem; line-height: 1.6;">
-                Parece que el enlace que seguiste no está disponible, fue movido o la página ya no existe. Pero no te preocupes, tu agenda ideal sigue estando a un clic.
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="index.html" class="btn-primary" style="text-decoration: none; display: inline-flex;">
-                    <i class="fa-solid fa-house"></i> Volver al Inicio
-                </a>
-                <a href="https://wa.me/56900000000?text=Hola%20Kokomar%C3%BA,%20estaba%20buscando%20algo%20en%20la%20web%20y%20llegué%20a%20un%20enlace%20roto" target="_blank" class="btn-secondary" style="text-decoration: none; display: inline-flex; background: #fdf2f5; color: var(--pink-dark, #e05a87); border: 1px solid #f3e8ee; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 600;">
-                    <i class="fa-brands fa-whatsapp"></i> Ayuda por WhatsApp
-                </a>
-            </div>
+        <h1 class="error-title">Página no encontrada</h1>
+        
+        <!-- Dibujo central -->
+        <div class="error-image-container">
+            <img src="imagenes/404-personaje.webp" alt="Personaje confundido con agenda rota">
+        </div>
+        
+        <!-- Texto cómico como H2 -->
+        <h2 class="error-funny-title">"¡Ups! Se rompió la página, pero te juro que no fui yo"</h2>
+        
+        <!-- Párrafo explicativo debajo -->
+        <p class="error-desc">
+            Parece que el enlace que seguiste no está disponible, fue movido o la página ya no existe. Pero no te preocupes, tu agenda ideal sigue estando a un clic.
+        </p>
+
+        <!-- Botones de acción -->
+        <div class="error-buttons">
+            <a href="index.html" class="btn-primary" style="text-decoration: none; display: inline-flex;">
+                <i class="fa-solid fa-house"></i> Volver al Inicio
+            </a>
+            <a href="https://wa.me/56900000000?text=Hola%20Kokomar%C3%BA,%20llegué%20a%20un%20enlace%20roto%20en%20la%20web" target="_blank" class="btn-secondary" style="text-decoration: none; display: inline-flex; background: #fdf2f5; color: var(--pink-dark, #e05a87); border: 1px solid #f3e8ee; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 600;">
+                <i class="fa-brands fa-whatsapp"></i> Avisar por WhatsApp
+            </a>
         </div>
     </main>
 
