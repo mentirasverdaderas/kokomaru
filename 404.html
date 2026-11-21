@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada | Kokomarú</title>
+    <meta name="description" content="Ups, parece que esta página no existe o fue movida. Vuelve al inicio de Kokomarú.">
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Estilo específico centrado para la 404 -->
+    <style>
+        .error-container {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .error-code {
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--pink-dark, #e05a87);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .error-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f3e8ee;
+            max-width: 550px;
+            width: 100%;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="svg/logo-cuadrado-60.svg" alt="Kokomarú" class="navbar-logo">
+        </a>
+        <div class="nav-links">
+            <a href="index.html#categorias">Agendas</a>
+            <a href="index.html#precios">Versiones</a>
+            <a href="index.html#catalogo-info">Personalizar</a>
+            <a href="index.html" class="btn-nav-custom" style="text-decoration: none;">Volver al inicio</a>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO 404 -->
+    <main class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-card">
+            <div class="policy-icon" style="margin: 0 auto 1.2rem auto;"><i class="fa-solid fa-compass-drafting"></i></div>
+            <h2>¡Vaya! Nos perdimos de página</h2>
+            <p style="color: #666; margin-bottom: 1.5rem; line-height: 1.6;">
+                Parece que el enlace que seguiste no está disponible, fue movido o la página ya no existe. Pero no te preocupes, tu agenda ideal sigue estando a un clic.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html" class="btn-primary" style="text-decoration: none; display: inline-flex;">
+                    <i class="fa-solid fa-house"></i> Volver al Inicio
+                </a>
+                <a href="https://wa.me/56900000000?text=Hola%20Kokomar%C3%BA,%20estaba%20buscando%20algo%20en%20la%20web%20y%20llegué%20a%20un%20enlace%20roto" target="_blank" class="btn-secondary" style="text-decoration: none; display: inline-flex; background: #fdf2f5; color: var(--pink-dark, #e05a87); border: 1px solid #f3e8ee; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 600;">
+                    <i class="fa-brands fa-whatsapp"></i> Ayuda por WhatsApp
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER DINÁMICO -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Script para cargar el footer -->
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
