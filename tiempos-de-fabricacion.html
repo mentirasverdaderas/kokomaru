@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiempos de Fabricación y Envíos | Kokomarú</title>
+    <meta name="description" content="Conoce los tiempos de preparación en taller, despachos en 24 horas en Santiago y envíos a regiones con Blue Express en Kokomarú.">
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="svg/logo-cuadrado-60.svg" alt="Kokomarú" class="navbar-logo">
+        </a>
+        <div class="nav-links">
+            <a href="index.html#categorias">Agendas</a>
+            <a href="index.html#precios">Versiones</a>
+            <a href="index.html#catalogo-info">Personalizar</a>
+            <a href="index.html" class="btn-nav-custom" style="text-decoration: none;">Volver al inicio</a>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL DE TIEMPOS DE FABRICACIÓN Y ENVÍOS -->
+    <main class="section-container policies-page">
+        <div class="policies-header">
+            <span class="brand-tag">De nuestras manos a las tuyas · Plazos claros</span>
+            <h1>Tiempos de Fabricación y Envíos</h1>
+            <p class="section-desc">Cada agenda de Kokomarú se elabora de manera artesanal y personalizada. Aquí te detallamos los plazos exactos de preparación en taller y cómo gestionamos los despachos a Santiago y regiones.</p>
+        </div>
+
+        <div class="policies-grid">
+            
+            <!-- 1. TIEMPO DE PREPARACIÓN EN TALLER (A ANCHO COMPLETO) -->
+            <article class="policy-card full-width-card">
+                <div class="policy-icon"><i class="fa-solid fa-clock"></i></div>
+                <h2>1. Tiempo de Preparación en Taller</h2>
+                <p>Las agendas tendrán un tiempo de preparación de <strong>3 días hábiles</strong> contados estrictamente desde el momento en que se hace efectivo y se confirma el pago del pedido.</p>
+                <p>Al ser un trabajo hecho a mano y personalizado bajo pedido, este plazo nos permite asegurar la máxima calidad en el armado, encuadernación y revisión de cada detalle antes de que salga rumbo a tu hogar.</p>
+            </article>
+
+            <!-- 2. DESPACHOS DENTRO DE SANTIAGO -->
+            <article class="policy-card">
+                <div class="policy-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <h2>2. Despachos dentro de Santiago</h2>
+                <p>Una vez finalizado el periodo de preparación en nuestro taller:</p>
+                <ul>
+                    <li><strong>Plazo de entrega:</strong> Dentro de Santiago, la empresa de transporte realiza la entrega en un plazo estimado de <strong>24 horas</strong>.</li>
+                    <li><strong>Gestión:</strong> Los envíos se coordinan de manera directa para que recibas tu agenda de forma rápida y segura en la puerta de tu casa u oficina.</li>
+                </ul>
+            </article>
+
+            <!-- 3. ENVÍOS A REGIONES (BLUE EXPRESS) -->
+            <article class="policy-card">
+                <div class="policy-icon"><i class="fa-solid fa-box-archive"></i></div>
+                <h2>3. Envíos a Regiones</h2>
+                <p>Para todos los envíos fuera de la Región Metropolitana:</p>
+                <ul>
+                    <li><strong>Operador logístico:</strong> Los envíos a regiones se realizan a través de la empresa de transporte <strong>Blue Express</strong>.</li>
+                    <li><strong>Tiempos de tránsito:</strong> El tiempo de entrega dependerá exclusivamente de la operación y los plazos de distribución de la empresa de transporte una vez despachado el paquete desde nuestro taller.</li>
+                    <li><strong>Seguimiento:</strong> Te entregaremos tu número de seguimiento en cuanto realicemos el envío para que puedas monitorear tu encomienda en todo momento.</li>
+                </ul>
+            </article>
+
+        </div>
+
+        <!-- BOTÓN DE CONTACTO WHATSAPP -->
+        <div class="policies-cta">
+            <p>¿Tienes dudas sobre el estado de tu envío o necesitas un despacho especial?</p>
+            <a href="https://wa.me/56900000000?text=Hola%20Kokomar%C3%BA,%20tengo%20una%20consulta%20sobre%20los%20tiempos%20de%20fabricaci%C3%B3n%20y%20env%C3%edos" target="_blank" class="btn-primary" style="display: inline-flex; text-decoration: none;">
+                <i class="fa-brands fa-whatsapp"></i> Consúltanos por WhatsApp
+            </a>
+        </div>
+    </main>
+
+    <!-- FOOTER DINÁMICO -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Script mínimo para cargar el footer -->
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
