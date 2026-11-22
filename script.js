@@ -18,9 +18,9 @@ const tiposAgenda = [
 ];
 
 const versionesAgenda = [
-    { id: 'economica', nombre: 'Versión Económica (Esencial)', precio: 14990, desc: '• 100 hojas de 90g\n• Diseño fijo (sin personalizar)\n• Sin elástico ni esquineros', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80' },
-    { id: 'intermedia', nombre: 'Versión Intermedia (Personalizable)', precio: 19990, desc: '• 100 hojas de 105g (Mayor grosor)\n• Con esquineros metálicos protectores\n• Elige Portadas, Guardas y hojas', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', destacada: true },
-    { id: 'full', nombre: 'Versión Full (Premium)', precio: 24990, desc: '• 120 hojas de 105g extra premium\n• Con esquineros metálicos y elástico de cierre\n• Personalización total + Marcalibros de regalo', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80' }
+    { id: 'pocket', nombre: 'Pocket', precio: 14990, desc: '• 100 hojas de 90g\n• Diseño fijo (sin personalizar)\n• Sin elástico ni esquineros', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80' },
+    { id: 'clasica', nombre: 'Clásica', precio: 19990, desc: '• 100 hojas de 105g (Mayor grosor)\n• Con esquineros metálicos protectores\n• Elige Portadas, Guardas y hojas', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', destacada: true },
+    { id: 'deluxe', nombre: 'Deluxe', precio: 24990, desc: '• 120 hojas de 105g extra premium\n• Con esquineros metálicos y elástico de cierre\n• Personalización total + Marcalibros de regalo', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80' }
 ];
 
 const tematicasAgenda = [
@@ -360,7 +360,7 @@ function selectTematica(id) { selectedConfig.tematica = id; renderStep3(); valid
 function renderStep4() {
     const container = document.getElementById('seccionesContainer');
     let seccionesActivas = ['portada', 'guarda', 'planner', 'rayado', 'fondo'];
-    if (selectedConfig.version === 'full') seccionesActivas.push('marcalibros');
+    if (selectedConfig.version === 'deluxe') seccionesActivas.push('marcalibros');
 
     const titles = {
         portada: 'Portada / Contraportada',
@@ -410,7 +410,7 @@ function validateStep() {
 function checkStep4Completion() {
     if (currentStep !== 4) return;
     let seccionesActivas = ['portada', 'guarda', 'planner', 'rayado', 'fondo'];
-    if (selectedConfig.version === 'full') seccionesActivas.push('marcalibros');
+    if (selectedConfig.version === 'deluxe') seccionesActivas.push('marcalibros');
 
     const todasSeccionesElegidas = seccionesActivas.every(sec => selectedConfig.secciones[sec] !== null);
     const envioElegido = selectedConfig.envio !== null;
@@ -475,7 +475,7 @@ function getResumenTexto() {
     texto += `• Planner: ${selectedConfig.secciones.planner || '-'}\n`;
     texto += `• Rayado: ${selectedConfig.secciones.rayado || '-'}\n`;
     texto += `• Fondo hoja: ${selectedConfig.secciones.fondo || '-'}\n`;
-    if (selectedConfig.version === 'full') {
+    if (selectedConfig.version === 'deluxe') {
         texto += `• Marcalibros: ${selectedConfig.secciones.marcalibros || '-'}\n`;
     }
     texto += `• Envío: ${selectedConfig.envio === 'santiago' ? `Santiago ($${COSTO_ENVIO_SANTIAGO.toLocaleString('es-CL')})` : 'Regiones (Blue Express - Monto a coordinar por WhatsApp)'}\n`;
