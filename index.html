@@ -88,14 +88,60 @@
         </div>
     </section>
 
-    <!-- BLOQUE 4B: LOS 3 NIVELES DE PRECIOS / CALIDAD -->
-    <section id="precios" class="section-container bg-soft-pink">
-        <h2>Elige el nivel de detalle que mereces</h2>
-        <p class="section-desc">Tres versiones claras, sin letras chicas, para que inviertas exactamente en lo que buscas:</p>
-        <div class="pricing-showcase-grid" id="homePricingGrid">
-            <!-- Inyectado por JS -->
+    <!-- BLOQUE 4B: LOS 3 NIVELES DE PRECIOS / CALIDAD + FOTO PANORÁMICA INTERACTIVA -->
+<section id="precios" class="section-container bg-soft-pink">
+    <h2>Elige el nivel de detalle que mereces</h2>
+    <p class="section-desc">Tres versiones claras, sin letras chicas, para que inviertas exactamente en lo que buscas:</p>
+    
+    <!-- FOTO PANORÁMICA SUPERIOR (VISIBLE EN PC / OCULTA EN MÓVIL) -->
+    <div class="panoramic-hotspot-container desktop-only">
+        <img src="img/panoramica-agendas.jpg" alt="Colección de Agendas Kokomarú" class="panoramic-image">
+
+        <!-- PUNTO 1 -->
+        <div class="hotspot-item" style="top: 50%; left: 25%;">
+            <button class="hotspot-dot" aria-label="Ver Versión Económica"></button>
+            <div class="hotspot-card">
+                <div class="hotspot-info">
+                    <strong>Versión Económica</strong>
+                    <span>Esencial y funcional</span>
+                    <p class="hotspot-price">$14.990</p>
+                </div>
+                <a href="#precios" class="hotspot-link"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
         </div>
-    </section>
+
+        <!-- PUNTO 2 (Destacado) -->
+        <div class="hotspot-item" style="top: 45%; left: 50%;">
+            <button class="hotspot-dot" aria-label="Ver Versión Intermedia"></button>
+            <div class="hotspot-card">
+                <div class="hotspot-info">
+                    <strong>Versión Intermedia</strong>
+                    <span>La más elegida</span>
+                    <p class="hotspot-price">$19.990</p>
+                </div>
+                <a href="#precios" class="hotspot-link"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+
+        <!-- PUNTO 3 -->
+        <div class="hotspot-item" style="top: 52%; left: 75%;">
+            <button class="hotspot-dot" aria-label="Ver Versión Full"></button>
+            <div class="hotspot-card">
+                <div class="hotspot-info">
+                    <strong>Versión Full</strong>
+                    <span>Premium total</span>
+                    <p class="hotspot-price">$24.990</p>
+                </div>
+                <a href="#precios" class="hotspot-link"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRILLA / CARRUSEL DE TARJETAS DE PRECIOS -->
+    <div class="pricing-showcase-grid" id="homePricingGrid">
+        <!-- Inyectado por JS -->
+    </div>
+</section>
 
     <!-- SECCIÓN DEDICADA AL CATÁLOGO Y PERSONALIZACIÓN -->
     <section id="catalogo-info" class="section-container">

@@ -218,16 +218,41 @@ function renderHomeSections() {
         </div>
     `).join('');
 
-    // Bloque 4B: 3 Versiones de Precio
-    document.getElementById('homePricingGrid').innerHTML = versionesAgenda.map(item => `
-        <div class="home-price-card ${item.destacada ? 'featured' : ''}">
-            ${item.destacada ? '<span class="popular-badge">Más elegida</span>' : ''}
-            <h3>${item.nombre}</h3>
-            <div class="home-price-amount">$${item.precio.toLocaleString('es-CL')}</div>
-            <p>${item.desc}</p>
-            <button onclick="openModalWithVersion('${item.id}')" class="btn-secondary-hero" style="width:100%; padding: 0.7rem;">Elegir esta versión</button>
+    // Bloque 4B: 3 Versiones de Precio con soporte para carrusel móvil y foto individual
+document.getElementById('homePricingGrid').innerHTML = versionesAgenda.map(item => `
+    <div class="home-price-card ${item.destacada ? 'featured' : ''}">
+        <!-- FOTO INDIVIDUAL PARA MÓVIL (VISIBLE SOLO EN PANTALLAS PEQUEÑAS) -->
+        <div class="card-mobile-image mobile-only">
+            <img src="${item.fotoMovil || 'img/default-agenda.jpg'}" alt="${item.nombre}" onclick="openImageModal('${item.fotoMovil}')">
+            <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Toca para ampliar</span>
         </div>
-    `).join('');
+
+        ${item.destacada ? '<span class="popular-badge">Más elegida</span>' : ''}
+        <h3>${item.nombre}</h3>
+        <div class="home-price-amount">$${item.precio.toLocaleString('es-CL')}</div>
+        <p>${item.desc}</p>
+        <button onclick="openModalWithVersion('${item.id}')" class="btn-secondary-hero" style="width:100%; padding: 0.7rem;">Elegir esta versión</button>
+    </div>
+`).join('');
+
+// Lógica de los puntos interactivos de la foto panorámica (PC)
+document.addEventListener("DOMContentLoaded", () => {
+    const hotspotItems = document.querySelectorAll(".panoramic-hotspot-container .hotspot-item");
+
+    hotspotItems.forEach(item => {
+        const dot = item.querySelector(".hotspot-dot");
+        dot.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isActive = item.classList.contains("active");
+            hotspotItems.forEach(other => other.classList.remove("active"));
+            if (!isActive) item.classList.add("active");
+        });
+    });
+
+    document.addEventListener("click", () => {
+        hotspotItems.forEach(item => item.classList.remove("active"));
+    });
+});
 
     // Vitrina Agendas Listas
     document.getElementById('readyAgendasGrid').innerHTML = agendasListas.map(item => `

@@ -326,11 +326,125 @@ body {
     color: #666;
 }
 
-/* BLOQUE 4B: PRECIOS EN HOME */
+/* BLOQUE 4B: PRECIOS EN HOME Y FOTO PANORÁMICA */
+.panoramic-hotspot-container {
+    position: relative;
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto 2.5rem auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.panoramic-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+/* PUNTOS INTERACTIVOS ESTILO IKEA (PC) */
+.panoramic-hotspot-container .hotspot-item {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.panoramic-hotspot-container .hotspot-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(17, 17, 17, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.panoramic-hotspot-container .hotspot-dot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.panoramic-hotspot-container .hotspot-dot:hover,
+.panoramic-hotspot-container .hotspot-item.active .hotspot-dot {
+    transform: scale(1.15);
+    background: var(--pink-dark);
+}
+
+.panoramic-hotspot-container .hotspot-card {
+    position: absolute;
+    top: 50%;
+    left: 42px;
+    transform: translateY(-50%);
+    background: #ffffff;
+    color: #111111;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: stretch;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 20;
+}
+
+.panoramic-hotspot-container .hotspot-item.active .hotspot-card {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hotspot-info {
+    padding: 0.6rem 0.9rem;
+    flex: 1;
+}
+
+.hotspot-info strong {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.hotspot-info span {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 0.2rem;
+}
+
+.hotspot-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--pink-dark);
+}
+
+.hotspot-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.7rem;
+    border-left: 1px solid #eee;
+    color: #111;
+    text-decoration: none;
+}
+
+/* GRILLA DE PRECIOS GENERAL */
 .pricing-showcase-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.8rem;
+    max-width: 1050px;
+    margin: 0 auto;
 }
 
 .home-price-card {
@@ -381,6 +495,68 @@ body {
     line-height: 1.7;
     margin-bottom: 1.5rem;
     flex: 1;
+}
+
+/* CONTROL DE VISIBILIDAD DISPOSITIVOS */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+/* ESTILOS DE FOTO MÓVIL DENTRO DE LA TARJETA */
+.card-mobile-image {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    cursor: pointer;
+}
+
+.card-mobile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.card-mobile-image:hover img {
+    transform: scale(1.05);
+}
+
+.zoom-hint {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+/* ADAPTACIÓN MÓVIL: CARRUSEL HORIZONTAL */
+@media (max-width: 768px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+
+    .pricing-showcase-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding: 1rem 0.5rem 1.5rem 0.5rem;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .home-price-card {
+        min-width: 85%;
+        max-width: 85%;
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+        padding: 1.5rem 1.2rem;
+    }
 }
 
 /* SECCIÓN CATÁLOGO DEDICADA */
