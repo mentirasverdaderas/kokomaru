@@ -18,9 +18,9 @@ const tiposAgenda = [
 ];
 
 const versionesAgenda = [
-    { id: 'economica', nombre: 'Versión Económica (Esencial)', precio: 14990, desc: '• 100 hojas de 90g\n• Diseño fijo (sin personalizar)\n• Sin elástico ni esquineros', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80' },
-    { id: 'intermedia', nombre: 'Versión Intermedia (Personalizable)', precio: 19990, desc: '• 100 hojas de 105g (Mayor grosor)\n• Con esquineros metálicos protectores\n• Elige Portadas, Guardas y hojas', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', destacada: true },
-    { id: 'full', nombre: 'Versión Full (Premium)', precio: 24990, desc: '• 120 hojas de 105g extra premium\n• Con esquineros metálicos y elástico de cierre\n• Personalización total + Marcalibros de regalo', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80' }
+    { id: 'economica', nombre: 'Versión Económica (Esencial)', precio: 14990, desc: '• 100 hojas de 90g\n• Diseño fijo (sin personalizar)\n• Sin elástico ni esquineros', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80' },
+    { id: 'intermedia', nombre: 'Versión Intermedia (Personalizable)', precio: 19990, desc: '• 100 hojas de 105g (Mayor grosor)\n• Con esquineros metálicos protectores\n• Elige Portadas, Guardas y hojas', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', destacada: true },
+    { id: 'full', nombre: 'Versión Full (Premium)', precio: 24990, desc: '• 120 hojas de 105g extra premium\n• Con esquineros metálicos y elástico de cierre\n• Personalización total + Marcalibros de regalo', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80' }
 ];
 
 const tematicasAgenda = [
@@ -89,8 +89,7 @@ const opcionesSecciones = {
 };
 
 // =========================================================================
-// DATOS PARA LOS CARRUSELES CRUZADOS (ALTERNANDO FOTO Y VIDEO)
-// Reemplaza las URLs por tus propias fotos (.jpg/.png) y videos cortos (.mp4)
+// DATOS PARA LOS CARRUSELES CRUZADOS
 // =========================================================================
 const itemsCarrusel1 = [
     { tipo: 'foto', src: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', etiqueta: 'Agenda Full Snoopy' },
@@ -135,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStep2();
     renderStep3();
     renderStep4();
+    initPanoramicHotspots(); // Inicializador limpio de los puntos de la foto panorámica
     checkURLParameters();
 
     // Abrir / Cerrar modal
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // =========================================================================
 function checkLiveSchedule() {
     const now = new Date();
-    const day = now.getDay(); // 5 = Viernes
+    const day = now.getDay(); 
     const hour = now.getHours();
 
     const isLiveNow = FORZAR_MODO_LIVE || (day === 5 && hour >= 21 && hour < 22);
@@ -219,40 +219,20 @@ function renderHomeSections() {
     `).join('');
 
     // Bloque 4B: 3 Versiones de Precio con soporte para carrusel móvil y foto individual
-document.getElementById('homePricingGrid').innerHTML = versionesAgenda.map(item => `
-    <div class="home-price-card ${item.destacada ? 'featured' : ''}">
-        <!-- FOTO INDIVIDUAL PARA MÓVIL (VISIBLE SOLO EN PANTALLAS PEQUEÑAS) -->
-        <div class="card-mobile-image mobile-only">
-            <img src="${item.fotoMovil || 'img/default-agenda.jpg'}" alt="${item.nombre}" onclick="openImageModal('${item.fotoMovil}')">
-            <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Toca para ampliar</span>
+    document.getElementById('homePricingGrid').innerHTML = versionesAgenda.map(item => `
+        <div class="home-price-card ${item.destacada ? 'featured' : ''}">
+            <div class="card-mobile-image mobile-only">
+                <img src="${item.fotoMovil || 'img/default-agenda.jpg'}" alt="${item.nombre}" onclick="openImageModal('${item.fotoMovil}')">
+                <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Toca para ampliar</span>
+            </div>
+
+            ${item.destacada ? '<span class="popular-badge">Más elegida</span>' : ''}
+            <h3>${item.nombre}</h3>
+            <div class="home-price-amount">$${item.precio.toLocaleString('es-CL')}</div>
+            <p>${item.desc}</p>
+            <button onclick="openModalWithVersion('${item.id}')" class="btn-secondary-hero" style="width:100%; padding: 0.7rem;">Elegir esta versión</button>
         </div>
-
-        ${item.destacada ? '<span class="popular-badge">Más elegida</span>' : ''}
-        <h3>${item.nombre}</h3>
-        <div class="home-price-amount">$${item.precio.toLocaleString('es-CL')}</div>
-        <p>${item.desc}</p>
-        <button onclick="openModalWithVersion('${item.id}')" class="btn-secondary-hero" style="width:100%; padding: 0.7rem;">Elegir esta versión</button>
-    </div>
-`).join('');
-
-// Lógica de los puntos interactivos de la foto panorámica (PC)
-document.addEventListener("DOMContentLoaded", () => {
-    const hotspotItems = document.querySelectorAll(".panoramic-hotspot-container .hotspot-item");
-
-    hotspotItems.forEach(item => {
-        const dot = item.querySelector(".hotspot-dot");
-        dot.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const isActive = item.classList.contains("active");
-            hotspotItems.forEach(other => other.classList.remove("active"));
-            if (!isActive) item.classList.add("active");
-        });
-    });
-
-    document.addEventListener("click", () => {
-        hotspotItems.forEach(item => item.classList.remove("active"));
-    });
-});
+    `).join('');
 
     // Vitrina Agendas Listas
     document.getElementById('readyAgendasGrid').innerHTML = agendasListas.map(item => `
@@ -270,6 +250,29 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join('');
 }
 
+// =========================================================================
+// LÓGICA DE LOS PUNTOS INTERACTIVOS (FOTO PANORÁMICA PC)
+// =========================================================================
+function initPanoramicHotspots() {
+    const hotspotItems = document.querySelectorAll(".panoramic-hotspot-container .hotspot-item");
+
+    hotspotItems.forEach(item => {
+        const dot = item.querySelector(".hotspot-dot");
+        if (dot) {
+            dot.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isActive = item.classList.contains("active");
+                hotspotItems.forEach(other => other.classList.remove("active"));
+                if (!isActive) item.classList.add("active");
+            });
+        }
+    });
+
+    document.addEventListener("click", () => {
+        hotspotItems.forEach(item => item.classList.remove("active"));
+    });
+}
+
 function openModalWithVersion(versionId) {
     selectedConfig.version = versionId;
     renderStep2();
@@ -284,7 +287,6 @@ function openModalWithVersion(versionId) {
 // =========================================================================
 function renderCarousels() {
     const buildTrackHTML = (items) => {
-        // Duplicamos el arreglo para crear el bucle infinito fluido sin saltos
         const doubled = [...items, ...items];
         return doubled.map(media => `
             <div class="media-card">
@@ -535,7 +537,6 @@ function sendToFriend() {
     const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
     const resumen = getResumenTexto();
 
-    // Incluye el enlace directo a la imagen de la temática elegida para vista previa en WhatsApp + el link interactivo
     const mensajeAmiga = `¡Hola! Mira la agenda Kokomarú que estoy armando:\n\n${resumen}\n\nVista de la temática (${temObj ? temObj.nombre : ''}):\n${temObj ? temObj.img : ''}\n\nSi quieres verla o cambiar alguna opción, entra aquí (se abrirá en una ventana nueva):\n${shareUrl}`;
     
     window.open(`https://wa.me/${fullPhone}?text=${encodeURIComponent(mensajeAmiga)}`, '_blank');
