@@ -339,7 +339,7 @@ body {
 
 .panoramic-image {
     width: 100%;
-    max-height: 420px;
+    max-height: 280px;
     object-fit: cover;
     display: block;
 }
