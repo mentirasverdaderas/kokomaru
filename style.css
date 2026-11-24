@@ -1684,3 +1684,112 @@ header, nav, .navbar {
         grid-template-columns: 1fr;
     }
 }
+
+/* =================================================================        */
+/* ESTILOS SECCIÓN COMPARADOR VISUAL                                        */
+/* =================================================================        */
+.comparador-section {
+    padding: 4rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.comparador-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.comparador-header h2 {
+    font-size: 2rem;
+    color: var(--text-color, #2d2d2d);
+    margin-bottom: 0.5rem;
+}
+
+.comparador-header p {
+    color: #666;
+    font-size: 1.05rem;
+}
+
+.comparador-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.comparador-card {
+    background: #ffffff;
+    border: 2px solid #eae5de;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comparador-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* Tarjeta Clásica destacada */
+.comparador-card.popular {
+    border-color: var(--pink-dark, #d97788);
+    box-shadow: 0 6px 25px rgba(217, 119, 136, 0.12);
+}
+
+.version-badge {
+    align-self: flex-start;
+    background-color: #f0ebe6;
+    color: #555;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.popular-badge {
+    background-color: var(--pink-dark, #d97788);
+    color: #ffffff;
+}
+
+.comparador-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-color, #2d2d2d);
+    margin-bottom: 1.5rem;
+}
+
+.features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+.features-list li i.fa-check {
+    color: #27ae60;
+    margin-top: 0.2rem;
+}
+
+.features-list li.disabled {
+    color: #aaa;
+}
+
+.features-list li.disabled i.fa-xmark {
+    color: #ccc;
+    margin-top: 0.2rem;
+}
