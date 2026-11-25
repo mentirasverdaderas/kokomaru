@@ -1,11 +1,8 @@
 // =========================================================================
-// CONFIGURACIÓN GENERAL (EDITA AQUÍ TU NÚMERO Y HORARIO DE LIVE)
+// CONFIGURACIÓN GENERAL (EDITA AQUÍ TU NÚMERO DE WHATSAPP)
 // =========================================================================
 const WHATSAPP_PYME = '56900000000'; // Reemplaza con tu número real (569 + 8 dígitos)
 const COSTO_ENVIO_SANTIAGO = 2990;
-
-// Cambia FORZAR_MODO_LIVE a true si quieres probar cómo se ve el Hero durante un Live
-const FORZAR_MODO_LIVE = false; 
 
 // =========================================================================
 // CATÁLOGO DE PRODUCTOS Y OPCIONES
@@ -18,9 +15,9 @@ const tiposAgenda = [
 ];
 
 const versionesAgenda = [
-    { id: 'pocket', nombre: 'Pocket', precio: 14990, desc: '• 80 hojas de 90g\n• Diseño fijo (sin personalizar)\n• Sin elástico ni esquineros', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80' },
-    { id: 'clasica', nombre: 'Clásica', precio: 19990, desc: '• 100 hojas de 105g (Mayor grosor)\n• Con esquineros metálicos protectores\n• Elige Portadas, Guardas y hojas', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', destacada: true },
-    { id: 'deluxe', nombre: 'Deluxe', precio: 24990, desc: '• 120 hojas de 105g extra premium\n• Con esquineros metálicos y elástico de cierre\n• Personalización total + Marcalibros de regalo', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80' }
+    { id: 'pocket', nombre: 'Pocket', precio: 14990, desc: '• 80 hojas de 90g\n• Anillos metálicos\n• Diseño esencial y funcional', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&auto=format&fit=crop&q=80' },
+    { id: 'clasica', nombre: 'Clásica', precio: 19990, desc: '• 100 hojas de 105g (Mayor grosor)\n• Con elástico y selección total\n• Portadas, guardas y rayado', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', destacada: true },
+    { id: 'deluxe', nombre: 'Deluxe', precio: 24990, desc: '• 120 hojas de 105g extra premium\n• Esquineros y 3 marcalibros\n• Personalización total', img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', fotoMovil: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80' }
 ];
 
 const tematicasAgenda = [
@@ -34,25 +31,25 @@ const tematicasAgenda = [
 
 const agendasListas = [
     {
-        nombre: 'Agenda Emprendedora - Edición Snoopy',
-        desc: 'Versión Full con 120 hojas, esquineros, elástico y temática exclusiva de Snoopy.',
+        nombre: 'Agenda Emprendedora - Edición Deluxe Snoopy',
+        desc: 'Versión Deluxe con 120 hojas, esquineros, elástico, marcalibros y temática exclusiva de Snoopy.',
         precio: 24990,
         img: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80',
-        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Emprendedora - Edición Snoopy (Versión Full) por $24.990.'
+        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Emprendedora - Edición Snoopy (Versión Deluxe) por $24.990.'
     },
     {
-        nombre: 'Agenda Maestras - Jardín Botánico',
-        desc: 'Versión Intermedia con esquineros, 100 hojas de 105g y diseño floral botánico.',
+        nombre: 'Agenda Maestras - Jardín Botánico Clásica',
+        desc: 'Versión Clásica con elástico, 100 hojas de 105g y diseño floral botánico.',
         precio: 19990,
         img: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&auto=format&fit=crop&q=80',
-        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Maestras - Jardín Botánico (Versión Intermedia) por $19.990.'
+        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Maestras - Jardín Botánico (Versión Clásica) por $19.990.'
     },
     {
-        nombre: 'Agenda Universitarias - Minimal Chic',
-        desc: 'Versión Económica esencial con 100 hojas de 90g y diseño minimalista limpio.',
+        nombre: 'Agenda Universitarias - Minimal Chic Pocket',
+        desc: 'Versión Pocket esencial con 80 hojas de 90g y diseño minimalista limpio.',
         precio: 14990,
         img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&auto=format&fit=crop&q=80',
-        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Universitarias - Minimal Chic (Versión Económica) por $14.990.'
+        mensajeWa: 'Hola Kokomarú, quiero comprar la agenda lista: Agenda Universitarias - Minimal Chic (Versión Pocket) por $14.990.'
     }
 ];
 
@@ -92,7 +89,7 @@ const opcionesSecciones = {
 // DATOS PARA LOS CARRUSELES CRUZADOS
 // =========================================================================
 const itemsCarrusel1 = [
-    { tipo: 'foto', src: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', etiqueta: 'Agenda Full Snoopy' },
+    { tipo: 'foto', src: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&auto=format&fit=crop&q=80', etiqueta: 'Agenda Deluxe Snoopy' },
     { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-woman-writing-in-a-notebook-4240-large.mp4', etiqueta: 'Hoja 105g en vivo' },
     { tipo: 'foto', src: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&auto=format&fit=crop&q=80', etiqueta: 'Detalles interiores' },
     { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-writing-in-a-diary-4238-large.mp4', etiqueta: 'Planner Semanal' },
@@ -102,7 +99,7 @@ const itemsCarrusel1 = [
 const itemsCarrusel2 = [
     { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-girl-writing-in-her-journal-4239-large.mp4', etiqueta: 'Acabado artesanal' },
     { tipo: 'foto', src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&auto=format&fit=crop&q=80', etiqueta: 'Agenda Maestras' },
-    { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-woman-writing-in-a-notebook-4240-large.mp4', etiqueta: 'Esquineros y elástico' },
+    { tipo: 'video', src: 'https://assets.mixkit.co/videos/preview/mixkit-woman-writing-in-a-notebook-4240-large.mp4', etiqueta: 'Elástico y esquineros' },
     { tipo: 'foto', src: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&auto=format&fit=crop&q=80', etiqueta: 'Pedido listo Santiago' },
     { tipo: 'foto', src: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&auto=format&fit=crop&q=80', etiqueta: 'Emprendedoras' }
 ];
@@ -127,14 +124,13 @@ const stepIndicatorSub = document.getElementById('stepIndicatorSub');
 const helpWhatsappBtn = document.getElementById('helpWhatsappBtn');
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkLiveSchedule();
     renderHomeSections();
     renderCarousels();
     renderStep1();
     renderStep2();
     renderStep3();
     renderStep4();
-    initPanoramicHotspots(); // Inicializador limpio de los puntos de la foto panorámica
+    initPanoramicHotspots();
     checkURLParameters();
 
     // Abrir / Cerrar modal
@@ -181,31 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // =========================================================================
-// HERO DINÁMICO PARA LIVES (VIERNES 21:00 A 22:00 HRS)
-// =========================================================================
-function checkLiveSchedule() {
-    const now = new Date();
-    const day = now.getDay(); 
-    const hour = now.getHours();
-
-    const isLiveNow = FORZAR_MODO_LIVE || (day === 5 && hour >= 21 && hour < 22);
-
-    const hero = document.getElementById('mainHero');
-    const normalContent = document.getElementById('heroNormalContent');
-    const liveContent = document.getElementById('heroLiveContent');
-
-    if (isLiveNow) {
-        hero.classList.add('is-live');
-        normalContent.style.display = 'none';
-        liveContent.style.display = 'block';
-    } else {
-        hero.classList.remove('is-live');
-        normalContent.style.display = 'block';
-        liveContent.style.display = 'none';
-    }
-}
-
-// =========================================================================
 // RENDERIZADO DE LA PÁGINA PRINCIPAL (HOME)
 // =========================================================================
 function renderHomeSections() {
@@ -218,7 +189,7 @@ function renderHomeSections() {
         </div>
     `).join('');
 
-    // Bloque 4B: 3 Versiones de Precio con soporte para carrusel móvil y foto individual
+    // Bloque 4B: 3 Versiones de Precio
     document.getElementById('homePricingGrid').innerHTML = versionesAgenda.map(item => `
         <div class="home-price-card ${item.destacada ? 'featured' : ''}">
             <div class="card-mobile-image mobile-only">
@@ -499,7 +470,7 @@ function updateSummaryContent() {
             <li><strong>Planner:</strong> ${selectedConfig.secciones.planner}</li>
             <li><strong>Rayado:</strong> ${selectedConfig.secciones.rayado}</li>
             <li><strong>Fondo:</strong> ${selectedConfig.secciones.fondo}</li>
-            ${selectedConfig.version === 'full' ? `<li><strong>Marcalibros:</strong> ${selectedConfig.secciones.marcalibros}</li>` : ''}
+            ${selectedConfig.version === 'deluxe' ? `<li><strong>Marcalibros:</strong> ${selectedConfig.secciones.marcalibros}</li>` : ''}
             <li><strong>Envío:</strong> ${selectedConfig.envio === 'santiago' ? `Santiago ($${COSTO_ENVIO_SANTIAGO.toLocaleString('es-CL')})` : 'Regiones (Monto a coordinar por WhatsApp)'}</li>
         </ul>
         <div class="summary-total">Total: $${total.toLocaleString('es-CL')}${selectedConfig.envio === 'regiones' ? ' (Envío: monto a coordinar por WhatsApp)' : ''}</div>

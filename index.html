@@ -38,9 +38,8 @@
         </div>
     </nav>
 
-    <!-- HERO DINÁMICO (MODO NORMAL vs MODO LIVE VIERNES) -->
+    <!-- HERO PRINCIPAL -->
     <header id="mainHero" class="hero">
-        <!-- Contenido Modo Normal -->
         <div id="heroNormalContent" class="hero-content">
             <span class="brand-tag">Agendas con Propósito & Diseño</span>
             <h1>¿Sientes que el día se te va de la?</h1>
@@ -52,18 +51,6 @@
                 <a href="#agendas-listas" class="btn-secondary-hero">Ver ediciones listas</a>
             </div>
         </div>
-
-        <!-- Contenido Modo LIVE -->
-<div id="heroLiveContent" class="hero-content live-mode">
-    <span class="live-badge"><span class="pulse-dot"></span> TRANSMITIENDO EN VIVO AHORA MISMO EN TIKTOK</span>
-    <h2>¡Llegó el Viernes de Live!</h2>
-    <p class="hero-copy">¡Entra ahora mismo y disfruta de promociones que solo estarán disponibles durante el live! Llévate tu agenda y recibe freebies exclusivos de nuestra marca.</p>
-    <div class="hero-buttons">
-        <a id="tiktokLiveLink" href="https://www.tiktok.com/@..." target="_blank" class="btn-tiktok-live">
-            <i class="fa-brands fa-tiktok"></i> Entrar al Live y reclamar promoción
-        </a>
-    </div>
-</div>
     </header>
 
     <!-- BARRA DE CONTACTO RÁPIDO Y REDES -->
@@ -99,7 +86,7 @@
 
         <!-- PUNTO 1 -->
         <div class="hotspot-item" style="top: 50%; left: 18%;">
-            <button class="hotspot-dot" aria-label="Ver Versión Económica"></button>
+            <button class="hotspot-dot" aria-label="Ver Versión Pocket"></button>
             <div class="hotspot-card">
                 <div class="hotspot-info">
                     <strong>Pocket</strong>
@@ -111,7 +98,7 @@
 
         <!-- PUNTO 2 (Destacado) -->
         <div class="hotspot-item" style="top: 45%; left: 50%;">
-            <button class="hotspot-dot" aria-label="Ver Versión Intermedia"></button>
+            <button class="hotspot-dot" aria-label="Ver Versión Clásica"></button>
             <div class="hotspot-card">
                 <div class="hotspot-info">
                     <strong>Clásica</strong>
@@ -123,7 +110,7 @@
 
         <!-- PUNTO 3 -->
         <div class="hotspot-item" style="top: 52%; left: 82%;">
-            <button class="hotspot-dot" aria-label="Ver Versión Full"></button>
+            <button class="hotspot-dot" aria-label="Ver Versión Deluxe"></button>
             <div class="hotspot-card">
                 <div class="hotspot-info">
                     <strong>Deluxe</strong>
@@ -163,20 +150,27 @@
         </div>
     </section>
 
-<!-- SECCIÓN COMPARADOR VISUAL -->
+<!-- SECCIÓN COMPARADOR VISUAL (ESTUDIO KOKOMARÚ) -->
 <section class="comparador-section" id="comparador">
     <div class="comparador-header">
-        <h2>Elige tu versión ideal</h2>
+        <h2>Estudio Kokomarú</h2>
         <p>Compara el contenido y los acabados de nuestras tres opciones de agendas.</p>
     </div>
 
     <div class="comparador-grid">
         <!-- Tarjeta Pocket -->
         <div class="comparador-card">
+            <span class="version-badge">Esencial</span>
             <h3>Pocket</h3>
             <ul class="features-list">
                 <li><i class="fa-solid fa-check"></i> 80 hojas de 90 grs</li>
                 <li><i class="fa-solid fa-check"></i> Anillos metálicos</li>
+                <li class="disabled"><i class="fa-solid fa-xmark"></i> Elástico de cierre</li>
+                <li class="disabled"><i class="fa-solid fa-xmark"></i> Esquineros metálicos</li>
+                <li class="disabled"><i class="fa-solid fa-xmark"></i> Marcalibros</li>
+                <li class="disabled"><i class="fa-solid fa-xmark"></i> Selección de portada y contraportada</li>
+                <li class="disabled"><i class="fa-solid fa-xmark"></i> Selección de guardas (internas)</li>
+                <li class="disabled"><i class="fa-solid fa-xmark"></i> Selección de rayado de hojas</li>
             </ul>
         </div>
 
@@ -188,6 +182,8 @@
                 <li><i class="fa-solid fa-check"></i> 100 hojas de 105 grs</li>
                 <li><i class="fa-solid fa-check"></i> Anillos metálicos</li>
                 <li><i class="fa-solid fa-check"></i> Elástico de cierre</li>
+                <li class="disabled"><i class="fa-solid fa-xmark"></i> Esquineros metálicos</li>
+                <li class="disabled"><i class="fa-solid fa-xmark"></i> Marcalibros</li>
                 <li><i class="fa-solid fa-check"></i> Selección de portada y contraportada</li>
                 <li><i class="fa-solid fa-check"></i> Selección de guardas (internas)</li>
                 <li><i class="fa-solid fa-check"></i> Selección de rayado de hojas</li>
@@ -196,6 +192,7 @@
 
         <!-- Tarjeta Deluxe -->
         <div class="comparador-card">
+            <span class="version-badge">Premium</span>
             <h3>Deluxe</h3>
             <ul class="features-list">
                 <li><i class="fa-solid fa-check"></i> 120 hojas de 105 grs</li>
@@ -252,7 +249,7 @@
         <div class="modal-container">
             <button id="closeModalBtn" class="modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
             
-            <!-- ENCABEZADO DE PASOS (CORREGIDO PARA PC Y MÓVIL) -->
+            <!-- ENCABEZADO DE PASOS -->
             <div class="modal-header">
                 <div class="step-indicator">
                     <span id="stepIndicatorMain">Paso 1 de 4</span>
@@ -379,7 +376,7 @@
         });
 </script>
 
-<!-- scripts de la página (modal, etc.) -->
+<!-- scripts de la página -->
     <script src="script.js"></script>
 </body>
 </html>

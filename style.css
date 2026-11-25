@@ -35,7 +35,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 6%;
+    padding: 8px 6% !important;
     background: var(--white);
     border-bottom: 1px solid var(--gray-border);
     position: sticky;
@@ -43,11 +43,16 @@ body {
     z-index: 100;
 }
 
-.nav-brand {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--pink-dark);
-    letter-spacing: -0.5px;
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-logo {
+    height: 55px !important;
+    width: auto !important;
+    display: block;
 }
 
 .nav-links {
@@ -171,61 +176,6 @@ body {
     background: var(--pink-light);
 }
 
-/* MODO LIVE EN EL HERO */
-.hero.is-live {
-    background: linear-gradient(135deg, #fff0f4 0%, #e8f6ff 100%);
-    border: 2px solid var(--pink-dark);
-    border-radius: 28px;
-    margin-top: 1.5rem;
-    box-shadow: 0 15px 40px rgba(232, 140, 156, 0.25);
-}
-
-.live-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #ff2a5f;
-    color: white;
-    padding: 0.45rem 1.2rem;
-    border-radius: 25px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-}
-
-.pulse-dot {
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-    animation: pulseAnim 1.2s infinite;
-}
-
-@keyframes pulseAnim {
-    0% { transform: scale(0.9); opacity: 1; }
-    50% { transform: scale(1.4); opacity: 0.5; }
-    100% { transform: scale(0.9); opacity: 1; }
-}
-
-.btn-live-cta {
-    background: #111;
-    color: white;
-    text-decoration: none;
-    padding: 1rem 2.2rem;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 1.05rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transition: transform 0.2s;
-}
-
-.btn-live-cta:hover {
-    transform: translateY(-2px);
-}
-
 /* BARRA DE REDES Y WHATSAPP */
 .social-bar {
     display: flex;
@@ -344,7 +294,7 @@ body {
     display: block;
 }
 
-/* PUNTOS INTERACTIVOS ESTILO IKEA (PC) */
+/* PUNTOS INTERACTIVOS (PC) */
 .panoramic-hotspot-container .hotspot-item {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -428,16 +378,6 @@ body {
     color: var(--pink-dark);
 }
 
-.hotspot-link {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.7rem;
-    border-left: 1px solid #eee;
-    color: #111;
-    text-decoration: none;
-}
-
 /* GRILLA DE PRECIOS GENERAL */
 .pricing-showcase-grid {
     display: grid;
@@ -501,7 +441,6 @@ body {
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 
-/* ESTILOS DE FOTO MÓVIL DENTRO DE LA TARJETA */
 .card-mobile-image {
     position: relative;
     width: 100%;
@@ -535,7 +474,6 @@ body {
     pointer-events: none;
 }
 
-/* ADAPTACIÓN MÓVIL: CARRUSEL HORIZONTAL */
 @media (max-width: 768px) {
     .desktop-only { display: none !important; }
     .mobile-only { display: block !important; }
@@ -557,6 +495,112 @@ body {
         scroll-snap-align: center;
         padding: 1.5rem 1.2rem;
     }
+}
+
+/* SECCIÓN COMPARADOR VISUAL (ESTUDIO KOKOMARÚ) */
+.comparador-section {
+    padding: 4rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.comparador-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.comparador-header h2 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.comparador-header p {
+    color: #666;
+    font-size: 1.05rem;
+}
+
+.comparador-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.comparador-card {
+    background: #ffffff;
+    border: 2px solid #eae5de;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comparador-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.comparador-card.popular {
+    border-color: var(--pink-dark);
+    box-shadow: 0 6px 25px rgba(217, 119, 136, 0.12);
+}
+
+.version-badge {
+    align-self: flex-start;
+    background-color: #f0ebe6;
+    color: #555;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.popular-badge {
+    background-color: var(--pink-dark);
+    color: #ffffff;
+}
+
+.comparador-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+.features-list li i.fa-check {
+    color: #27ae60;
+    margin-top: 0.2rem;
+}
+
+.features-list li.disabled {
+    color: #aaa;
+}
+
+.features-list li.disabled i.fa-xmark {
+    color: #ccc;
+    margin-top: 0.2rem;
 }
 
 /* SECCIÓN CATÁLOGO DEDICADA */
@@ -678,9 +722,7 @@ body {
     gap: 8px;
 }
 
-/* ===================================================================== */
-/* BLOQUE 5: DOS CARRUSELES INFINITOS CRUZADOS                           */
-/* ===================================================================== */
+/* CARRUSELES INFINITOS CRUZADOS */
 .social-proof-section {
     padding: 4.5rem 0;
     background: var(--white);
@@ -767,25 +809,7 @@ body {
     font-weight: 600;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 2.5rem 1rem;
-    background: #fff9fb;
-    border-top: 1px solid var(--gray-border);
-    color: #666;
-    font-size: 0.95rem;
-}
-
-.footer-note {
-    font-size: 0.82rem;
-    color: #999;
-    margin-top: 0.4rem;
-}
-
-/* ===================================================================== */
-/* MODAL CONFIGURADOR Y CABECERA CORREGIDA                               */
-/* ===================================================================== */
+/* MODAL CONFIGURADOR */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -842,7 +866,6 @@ footer {
     color: var(--white);
 }
 
-/* Cabecera con espacio suficiente para no chocar con la X */
 .modal-header {
     padding: 1rem 4.8rem 1rem 1.8rem;
     border-bottom: 1px solid var(--gray-border);
@@ -887,10 +910,9 @@ footer {
     align-items: center;
     gap: 6px;
     white-space: nowrap;
-    margin-right: 0.8rem; /* Corre el botón a la izquierda en PC */
+    margin-right: 0.8rem;
 }
 
-/* Ajuste específico para móvil: "Paso 1 de 4" arriba y "Tipo de Agenda" debajo */
 @media (max-width: 600px) {
     .modal-header {
         padding: 0.9rem 3.8rem 0.9rem 1.2rem;
@@ -944,7 +966,6 @@ footer {
     font-size: 0.95rem;
 }
 
-/* TARJETAS DENTRO DEL MODAL */
 .options-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -1239,7 +1260,6 @@ footer {
     gap: 8px;
 }
 
-/* FOOTER MODAL */
 .modal-footer {
     padding: 1rem 1.8rem;
     border-top: 1px solid var(--gray-border);
@@ -1399,56 +1419,10 @@ footer {
     flex: 1.4;
 }
 
-/* Estilo exclusivo para el bloque de Live con estética TikTok */
-#heroLiveContent.live-mode {
-    background: #0f0f11 !important; /* Fondo negro puro */
-    border: 1px solid #26262b;
-    border-radius: 20px;
-    padding: 35px 25px;
-    color: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-}
-
-#heroLiveContent.live-mode h2 {
-    color: #ffffff !important;
-}
-
-#heroLiveContent.live-mode .hero-copy {
-    color: #b0b0b8 !important;
-}
-
-/* Botón de TikTok estilizado dentro del bloque */
-#heroLiveContent.live-mode .btn-tiktok-live {
-    background: linear-gradient(135deg, #fe2c55, #25f4ee);
-    color: #ffffff;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 15px rgba(254, 44, 85, 0.4);
-    transition: transform 0.2s ease;
-}
-
-#heroLiveContent.live-mode .btn-tiktok-live:hover {
-    transform: translateY(-2px);
-}
-
-/* Parpadeo suave y lento para el indicador */
-.live-badge {
-    animation: pulseSlow 2s infinite ease-in-out;
-}
-
-@keyframes pulseSlow {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-/* --- ESTILOS DEL FOOTER DE 2 SECCIONES --- */
+/* FOOTER */
 .site-footer {
-  background-color: #fdf6f8; /* Tono rosado pastel suave de tu footer actual */
-  border-top: 2px solid #e6cfd6; /* Línea superior más oscura que separa la página del footer */
+  background-color: #fdf6f8;
+  border-top: 2px solid #e6cfd6;
   color: #5a5255;
   padding: 65px 20px 40px 20px;
   font-family: inherit;
@@ -1459,7 +1433,6 @@ footer {
   margin: 0 auto;
 }
 
-/* Cuadrícula de 4 columnas */
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1493,40 +1466,30 @@ footer {
 }
 
 .footer-col ul li a:hover {
-  color: #e87a90; /* Toque rosado marca al pasar el mouse */
+  color: #e87a90;
   padding-left: 3px;
 }
 
-/* Línea divisoria interrumpida con logo en el centro */
 .footer-logo-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px; /* Espacio pequeño entre la línea y los bordes del logo */
+  gap: 16px;
   margin: 35px 0 30px 0;
 }
 
 .divider-line {
   flex: 1;
   height: 1px;
-  background-color: #dfc3cc; /* Color de línea sutil pero visible */
+  background-color: #dfc3cc;
 }
 
 .footer-center-logo {
-  max-height: 36px; /* Ajusta esta altura según el tamaño de tu logo horizontal */
+  max-height: 36px;
   width: auto;
   display: block;
 }
 
-/* Por si usas texto mientras pones la imagen del logo */
-.footer-text-logo {
-  font-weight: 800;
-  font-size: 1.3rem;
-  color: #e87a90;
-  letter-spacing: -0.5px;
-}
-
-/* Parte inferior conservada */
 .footer-bottom {
   text-align: center;
   font-size: 0.85rem;
@@ -1542,7 +1505,6 @@ footer {
   color: #4a4144;
 }
 
-/* Adaptación para tablets y celulares */
 @media (max-width: 900px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1558,238 +1520,4 @@ footer {
   .footer-logo-divider {
     gap: 10px;
   }
-}
-
-/* --- LOGO EN EL ENCABEZADO --- */
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.navbar-logo {
-    height: 70px; /* Ajusta este valor si lo quieres un poco más grande o más chico */
-    width: auto;
-    display: block;
-}
-/* --- REDUCIR LA FRANJA BLANCA DEL ENCABEZADO --- */
-header, nav, .navbar {
-    padding-top: 8px !important;    /* Reduce el espacio superior */
-    padding-bottom: 8px !important; /* Reduce el espacio inferior */
-}
-
-.navbar-logo {
-    height: 55px !important;        /* Mantiene tu logo grande y nítido */
-    width: auto !important;
-}
-
-/* ========================================================================= */
-/* ESTILOS PÁGINA DE POLÍTICAS DE ENVÍO Y GARANTÍAS                          */
-/* ========================================================================= */
-.policies-page {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding-top: 2.5rem;
-    padding-bottom: 4rem;
-}
-
-.policies-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.policies-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-}
-
-.policy-card {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 1.8rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
-    border: 1px solid #f3e8ee;
-    text-align: left;
-}
-
-.policy-card.full-width-card {
-    grid-column: 1 / -1;
-}
-
-.policy-icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-    background: #fff0f5;
-    color: var(--pink-dark, #e05a87);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-}
-
-.policy-card h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.9rem;
-    color: #333;
-}
-
-.policy-card p, .policy-card li {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 0.6rem;
-}
-
-.policy-card ul {
-    padding-left: 1.2rem;
-    margin-bottom: 0.8rem;
-}
-
-.legal-link-box {
-    background: #f8f9fa;
-    padding: 0.9rem;
-    border-radius: 10px;
-    border-left: 3px solid var(--pink-dark, #e05a87);
-    margin-top: 1rem;
-    font-size: 0.88rem !important;
-}
-
-.legal-link-box a {
-    color: var(--pink-dark, #e05a87);
-    font-weight: 600;
-    text-decoration: underline;
-    display: inline-block;
-    margin-top: 0.3rem;
-}
-
-.policies-cta {
-    text-align: center;
-    margin-top: 3rem;
-    padding: 2rem;
-    background: #fff5f8;
-    border-radius: 18px;
-}
-
-.policies-cta p {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-@media (max-width: 768px) {
-    .policies-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* =================================================================        */
-/* ESTILOS SECCIÓN COMPARADOR VISUAL                                        */
-/* =================================================================        */
-.comparador-section {
-    padding: 4rem 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.comparador-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.comparador-header h2 {
-    font-size: 2rem;
-    color: var(--text-color, #2d2d2d);
-    margin-bottom: 0.5rem;
-}
-
-.comparador-header p {
-    color: #666;
-    font-size: 1.05rem;
-}
-
-.comparador-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    align-items: stretch;
-}
-
-.comparador-card {
-    background: #ffffff;
-    border: 2px solid #eae5de;
-    border-radius: 16px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.comparador-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-}
-
-/* Tarjeta Clásica destacada */
-.comparador-card.popular {
-    border-color: var(--pink-dark, #d97788);
-    box-shadow: 0 6px 25px rgba(217, 119, 136, 0.12);
-}
-
-.version-badge {
-    align-self: flex-start;
-    background-color: #f0ebe6;
-    color: #555;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    margin-bottom: 1rem;
-    letter-spacing: 0.5px;
-}
-
-.popular-badge {
-    background-color: var(--pink-dark, #d97788);
-    color: #ffffff;
-}
-
-.comparador-card h3 {
-    font-size: 1.5rem;
-    color: var(--text-color, #2d2d2d);
-    margin-bottom: 1.5rem;
-}
-
-.features-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-}
-
-.features-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.4;
-}
-
-.features-list li i.fa-check {
-    color: #27ae60;
-    margin-top: 0.2rem;
-}
-
-.features-list li.disabled {
-    color: #aaa;
-}
-
-.features-list li.disabled i.fa-xmark {
-    color: #ccc;
-    margin-top: 0.2rem;
 }
